@@ -48,7 +48,7 @@ public class AvsQualFlow_FromScratch extends BaseClass {
 		super();
 	}
 	
-	public ExtentReports extent;
+	public ExtentReports extent; 
 	public ExtentTest extentTest; 
 
 	String a_Name = prop.getProperty("Asset_Name");
