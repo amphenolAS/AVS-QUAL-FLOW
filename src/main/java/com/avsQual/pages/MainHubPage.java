@@ -233,9 +233,9 @@ public class MainHubPage extends BaseClass {
 	}
 
 	// click on connection btn
-	public void click_connectBtn() {
+	public void click_connectBtn() throws InterruptedException {
 		WebElement btnConnect = driver.findElementByAccessibilityId("btnConnect");
-		waitForElementLoad(btnConnect, 100);
+		Thread.sleep(1000);
 		clickOn(btnConnect);
 	}
 	

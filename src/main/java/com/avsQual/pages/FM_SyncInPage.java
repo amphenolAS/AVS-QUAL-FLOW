@@ -265,10 +265,10 @@ public class FM_SyncInPage extends BaseClass{
 		Thread.sleep(2000);
 		
 		//Below Path will be used while executing scripts from Eclipse IDE.
-		String fp2 = System.getProperty("user.dir") +  "\\src\\test\\resources\\TestData\\" + pathname;
+//		String fp2 = System.getProperty("user.dir") +  "\\src\\test\\resources\\TestData\\" + pathname;
 		
 		//placed present in the jar.exe path location.
-//		String fp2 = System.getProperty("user.dir") + "\\" + pathname;
+		String fp2 = System.getProperty("user.dir") + "\\" + pathname;
 		
 		System.out.println(fp2);
 		//"git\\AVS\\AVS\\src\\test\\resources\\TestData"
