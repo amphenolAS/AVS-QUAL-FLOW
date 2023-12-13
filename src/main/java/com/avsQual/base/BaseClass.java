@@ -116,22 +116,6 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 	}
-	public void click_On(WebElement element) {
-		try {
-			checkingElementClickable(element, 40000).click(); 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public void waitForElementEnabled(WebElement element) {
-		try {
-			checkingElementClickable(element, 86400);  //86400 for 24 hr
-		} catch (Exception e) {
-			checkingElementClickable(element, 86400); 
-		}
-	}
-
-	
 	//Check Visibility of the Element method
 		public boolean checkingInVisibilityOfElement(WebElement element, long WaitTime) {
 			return new WebDriverWait(driver, WaitTime).until(ExpectedConditions.invisibilityOf(element));
@@ -184,24 +168,6 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 	}
-	public void waitForElementLoad(WebElement element, int time)
-	{
-		try {
-			checkingVisibilityOfElement(element, time);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public void waitTime(WebElement element, int time)
-	{
-		//WebDriverWait wait = new WebDriverWait(driver, time);
-		try {
-			checkingElementClickable(element, time);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	//Get Text for any Element method
 	public String FetchText(WebElement element) {
 		String text = null;
@@ -230,25 +196,6 @@ public class BaseClass {
 		boolean status = false;
 		try {
 			status=checkingVisibilityOfElement(element, 10).isDisplayed();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}			
-		return status;
-	}
-	
-	public boolean waitForElementVisible(WebElement element) {
-		boolean status = false;
-		try {
-			status=checkingVisibilityOfElement(element, 86400).isDisplayed();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}			
-		return status;
-	}
-	public boolean waitForElementInVisible(WebElement element) {
-		boolean status = false;
-		try {
-			status=checkingInVisibilityOfElement(element, 86400);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			

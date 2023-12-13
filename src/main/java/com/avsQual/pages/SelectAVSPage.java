@@ -73,41 +73,27 @@ public class SelectAVSPage extends BaseClass{
 		Thread.sleep(2000);
 		clickOn(conctBtn);
 		
+			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
+			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
+			Thread.sleep(1000);
+			clickOn(yesBtn);
+			//tu.click_YesBtn_popup();
 		
 		try
 		{
-			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
-			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
-			waitForElementLoad(yesBtn, 10000);
-			Thread.sleep(1000);
-			click_On(yesBtn);
-			//tu.click_YesBtn_popup();
-		}
-		catch (Exception e) {
-			//WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
-			WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
-			waitForElementLoad(yesBtn, 10000);
-			Thread.sleep(1000);
-			click_On(yesBtn);
-		}
-		 
-		try
-		{
 			WebElement ethernet = driver.findElementByAccessibilityId("ConnectEthernetOption");
-			waitForElementLoad(ethernet, 100);
-			click_On(ethernet);
+			Thread.sleep(1000);
+			clickOn(ethernet);
 		}
 		catch (Exception e) {
 			e.getMessage();
 		}
 		
 		Thread.sleep(15000);
-		int explicitWaitTimeout = 200000; 
-        driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
-
+		
 		return new QualificationStudyPage();
 	}
-	public String fetchTxt_FromAVSUnit(String ip)
+	public String fetchTxt_FromAVSUnit(String ip) throws InterruptedException
 	{
 		List<WebElement> ipAdd = driver.findElementsByAccessibilityId("textBlockIpAddress");
 		
@@ -117,7 +103,7 @@ public class SelectAVSPage extends BaseClass{
 			value = FetchText(AVSIP);
 			if(value.equals(ip))
 			{
-				waitForElementLoad(AVSIP, 1000);
+				Thread.sleep(1000);
 				break;
 			}
 		}
@@ -132,7 +118,7 @@ public class SelectAVSPage extends BaseClass{
 		{
 			if(ip.equals(FetchText(AVSIP)))
 			{
-				waitForElementLoad(AVSIP, 1000);
+				Thread.sleep(1000);
 				clickOn(AVSIP);
 				break;
 			}
