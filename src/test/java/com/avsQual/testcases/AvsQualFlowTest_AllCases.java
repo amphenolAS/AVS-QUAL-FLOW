@@ -182,7 +182,7 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 		public void  AVS_QualFlowWithAllCondition(String AssetName, String SetupName, String AVS_IP, String SelectAVS, String BathTemp,
 				 String StartQual_Hours, String StartQual_Min, String StartQual_Sec) throws InterruptedException, IOException, AWTException
 		{
-			extentTest = extent.startTest("AVS Qualification Study's");
+			extentTest = extent.startTest(SetupName);
 			SoftAssert sa = new SoftAssert();
 
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);

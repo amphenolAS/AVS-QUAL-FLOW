@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.avsQual.testcases.AvsQualFlow_FromScratch">
+      <class name="com.avsQual.testcases.AvsQualFlowTest_AllCases">
         <methods>
+          <include name="AVS_QualFlowWithAllCondition"/>
+          <include name="endReport_releaseMomory"/>
           <include name="Teardown"/>
           <include name="PreSetup"/>
-          <include name="endReport_releaseMomory"/>
-          <include name="AVSQF"/>
           <include name="Setup"/>
         </methods>
-      </class> <!-- com.avsQual.testcases.AvsQualFlow_FromScratch -->
+      </class> <!-- com.avsQual.testcases.AvsQualFlowTest_AllCases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

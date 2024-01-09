@@ -294,7 +294,7 @@ public class AvsQualFlow_FromScratch extends BaseClass {
 	
 	public void AVSQF(String AssetName, String SetupName, String AVS_IP, String SelectAVS, String BathTemp) throws InterruptedException, IOException
 	{
-		extentTest = extent.startTest("AVS Qualification Study");
+		extentTest = extent.startTest(SetupName);
 		SoftAssert sa = new SoftAssert();
 
 		assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
