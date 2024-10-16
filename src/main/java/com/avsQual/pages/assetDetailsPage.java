@@ -54,6 +54,7 @@ public class assetDetailsPage extends BaseClass {
                 WebElement LastValidated = null;
                 WebElement assetDeleteIcon = null;
                 WebElement Yesbtn = null;
+                WebElement InitiateCalib_Btn = null;
 
                 private void initElements() {
                                 AssetDetailPageTitle = driver.findElementByAccessibilityId("AssetsNameTextBlock");
@@ -73,6 +74,7 @@ public class assetDetailsPage extends BaseClass {
                                 ReportsTile_Count = driver.findElementByAccessibilityId("ReportsCountTextBlock");
                                 DocsTile_Count = driver.findElementByAccessibilityId("DocumentsCountTextBlock");
 //                            AVSappClose_Btn = driver.findElementByAccessibilityId("Close");
+                                InitiateCalib_Btn = driver.findElementByAccessibilityId("StartCalibrationButton");
                                 InitiateQual_Btn = driver.findElementByAccessibilityId("StartQualificationButton");
                                 SetupsHeaderTxt = driver.findElementByAccessibilityId("SetupsHeaderTextBlock");
                                 NewSetupCreate_Btn = driver.findElementByAccessibilityId("CreateSetupButton");
@@ -131,6 +133,7 @@ public class assetDetailsPage extends BaseClass {
                                 LastValidated = null;
                                 assetDeleteIcon = null;
                                 Yesbtn = null;
+                                InitiateCalib_Btn = null;
                 }
 
 // Check the presence of AssetID field
@@ -176,6 +179,13 @@ public class assetDetailsPage extends BaseClass {
                 {
                 	WebElement qualCnt = driver.findElementByAccessibilityId("QualificationsCountTextBlock");
                 	String value = FetchText(qualCnt);
+                	int count = Integer.parseInt(value);
+                	return count;
+                }
+                public int CalCnt()
+                {
+                	WebElement calCnt = driver.findElementByAccessibilityId("CalibrationsCountTextBlock");
+                	String value = FetchText(calCnt);
                 	int count = Integer.parseInt(value);
                 	return count;
                 }
@@ -1135,6 +1145,11 @@ public class assetDetailsPage extends BaseClass {
                                 }
 
                 }
+             // click on Initiate Qual button under Setup tile
+        		public SelectAVSPage click_InitiateCalibBtn() throws IOException {
+        			clickOn(InitiateCalib_Btn);
+        			return new SelectAVSPage();
+        		}
                 
                 //Select the Setup
                 public void select_Setup(String SName)

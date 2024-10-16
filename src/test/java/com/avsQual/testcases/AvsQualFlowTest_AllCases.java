@@ -188,7 +188,7 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
 			
-			/*			//Qualification Count before study
+						//Qualification Count before study
 			int beforeStudyCnt = assetDetailsPage.QualificationCnt();
 			
 			assetDetailsPage.select_Setup(SetupName);
@@ -410,7 +410,7 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 			//Here 1 represents qualification reports increments by 1 with every iteration
 			sa.assertEquals(beforeStudyCnt , afterStudyCnt -1, "Fail: Qualification Reports are not generated");		
 			
-			sa.assertAll();   */
+			sa.assertAll();   
 		} 
 
 

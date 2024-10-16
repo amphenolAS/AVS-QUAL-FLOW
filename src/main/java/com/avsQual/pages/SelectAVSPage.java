@@ -67,7 +67,15 @@ public class SelectAVSPage extends BaseClass{
 	{
 		clickOn(addBtn);
 	}
-	//Click on connect Button
+	
+	public StartCaliberationPage click_CnnctBtn() throws InterruptedException, IOException
+	{
+		Thread.sleep(2000);
+		clickOn(conctBtn);
+		tu.click_YesBtn_popup();
+		return new StartCaliberationPage();
+	}
+	//Click on connect Button  
 	public QualificationStudyPage click_ConnectBtn() throws InterruptedException, IOException
 	{
 		Thread.sleep(2000);
@@ -90,16 +98,29 @@ public class SelectAVSPage extends BaseClass{
 			Thread.sleep(1000);
 			click_On(yesBtn);
 		}
-		 
+		
+		Thread.sleep(10000);
 		try
 		{
-			WebElement ethernet = driver.findElementByAccessibilityId("ConnectEthernetOption");
-			waitForElementLoad(ethernet, 100);
-			click_On(ethernet);
+			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
+			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
+			Thread.sleep(1000);
+			clickOn(yesBtn);
+			//tu.click_YesBtn_popup();
 		}
 		catch (Exception e) {
-			e.getMessage();
+		e.getMessage();
 		}
+//		try
+//		{
+//			WebElement ethernet = driver.findElementByAccessibilityId("ConnectEthernetOption");
+//			waitForElementLoad(ethernet, 100);
+//			click_On(ethernet);
+//			System.out.println("5");
+//		}
+//		catch (Exception e) {
+//			e.getMessage();
+//		}
 		
 		Thread.sleep(15000);
 		int explicitWaitTimeout = 200000; 

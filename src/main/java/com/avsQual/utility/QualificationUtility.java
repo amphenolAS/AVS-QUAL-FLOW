@@ -23,11 +23,11 @@ public class QualificationUtility extends BaseClass {
 
 	// Read TestData from the Excel sheet
 	//Below Path will be used while executing scripts from Eclipse IDE.
-//	public static String TestData_sheetPath = System.getProperty("user.dir") + "/src/test/resources/TestData/" + "AVSQualFlow_TestData.xlsx";
+	public static String TestData_sheetPath = System.getProperty("user.dir") + "/src/test/resources/TestData/" + "AVSQualFlow_TestData.xlsx";
 	
 	//Below Path will be used whle creating an Jar/exe file where the config file will be 
 	//placed present in the jar.exe path location.
-	public static String TestData_sheetPath = System.getProperty("user.dir") + "/AVSQualFlow_TestData.xlsx";
+//	public static String TestData_sheetPath = System.getProperty("user.dir") + "/AVSQualFlow_TestData.xlsx";
 
 
 	static Workbook book;
@@ -79,6 +79,12 @@ public class QualificationUtility extends BaseClass {
 	@DataProvider(name = "SetupAVSQF")
 	public static Object[][] SetupAVSQF() {
 		String sheetName = "SetupsCreation";
+		Object[][] data = getTestData(sheetName);
+		return data;
+	}
+	@DataProvider(name = "SaveButton_Validation")
+	public static Object[][] SaveButton_Validation() {
+		String sheetName = "SaveButton_Validation";
 		Object[][] data = getTestData(sheetName);
 		return data;
 	}

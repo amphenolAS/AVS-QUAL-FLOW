@@ -53,10 +53,10 @@ public class BaseClass {
 			prop = new Properties();
 			//Below Path will be used whle creating an Jar/exe file where the config file will be 
 			//placed present in the jar.exe path location.
-			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/UserInput.properties");
+//			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/UserInput.properties");
 
 			//Below Path will be used while executing scripts from Eclipse IDE.
-//			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
+			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
 //			FileInputStream fis = new FileInputStream("D:/UserInput.properties");
 			prop.load(fis);
 			
@@ -118,16 +118,16 @@ public class BaseClass {
 	}
 	public void click_On(WebElement element) {
 		try {
-			checkingElementClickable(element, 40000).click(); 
+			checkingElementClickable(element, 1000).click(); //86400 for 24 hr
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	public void waitForElementEnabled(WebElement element) {
 		try {
-			checkingElementClickable(element, 86400);  //86400 for 24 hr
+			checkingElementClickable(element, 4000);  //86400 for 24 hr
 		} catch (Exception e) {
-			checkingElementClickable(element, 86400); 
+			checkingElementClickable(element, 4000); 
 		}
 	}
 
@@ -225,6 +225,16 @@ public class BaseClass {
 		return status;
 	}
 	
+//	public boolean IsElementEnabledStatus(WebElement element) {
+//		boolean status = false;
+//		try {
+//			status=checkingVisibilityOfElement(element, 20000).isEnabled();//86400 for 24 hr
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}			
+//		return status;
+//	}
+	
 	//Very if the Element is Visible or Not Method
 	public boolean IsElementVisibleStatus(WebElement element) {
 		boolean status = false;
@@ -239,7 +249,7 @@ public class BaseClass {
 	public boolean waitForElementVisible(WebElement element) {
 		boolean status = false;
 		try {
-			status=checkingVisibilityOfElement(element, 86400).isDisplayed();
+			status=checkingVisibilityOfElement(element, 1000).isDisplayed();//86400 for 24 hr
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -248,7 +258,7 @@ public class BaseClass {
 	public boolean waitForElementInVisible(WebElement element) {
 		boolean status = false;
 		try {
-			status=checkingInVisibilityOfElement(element, 86400);
+			status=checkingInVisibilityOfElement(element, 1000);//86400 for 24 hr
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
