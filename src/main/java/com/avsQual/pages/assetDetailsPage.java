@@ -423,26 +423,26 @@ public class assetDetailsPage extends BaseClass {
                     	selectReqDate(mon, date, yr);
                     	
                     	WebElement hrs = driver.findElementByAccessibilityId("Hours");
-                    	waitForElementLoad(hrs, 100);
-                    	click_On(hrs);
+                    	Thread.sleep(1000);
+                    	clickOn(hrs);
                     	ClearText(hrs);
                     	enterText(hrs, hours);
                     	
                     	WebElement min = driver.findElementByAccessibilityId("Min");
-                    	waitForElementLoad(min, 100);
-                    	click_On(min);
+                    	Thread.sleep(1000);
+                    	clickOn(min);
                     	ClearText(min);
                     	enterText(min, mins);
                     	
                     	WebElement sec = driver.findElementByAccessibilityId("Sec");
-                    	waitForElementLoad(sec, 100);
-                    	click_On(sec);
+                    	Thread.sleep(1000);
+                    	clickOn(sec);
                     	ClearText(sec);
                     	enterText(sec, secs);
                     	
                     	WebElement okPopup = driver.findElementByAccessibilityId("PromptQualificationStartPopupOKButton");
-                    	waitForElementLoad(okPopup, 100);
-                    	click_On(okPopup);
+                    	Thread.sleep(1000);
+                    	clickOn(okPopup);
                     }
                    }
                    catch (Exception e) {
@@ -462,26 +462,26 @@ public class assetDetailsPage extends BaseClass {
     //                	selectReqDate(mon, date, yr);
                     	
                     	WebElement hrs = driver.findElementByAccessibilityId("Hours");
-                    	waitForElementLoad(hrs, 100);
-                    	click_On(hrs);
+                    	Thread.sleep(1000);
+                    	clickOn(hrs);
                     	ClearText(hrs);
                     	enterText(hrs, hours);
                     	
                     	WebElement min = driver.findElementByAccessibilityId("Min");
-                    	waitForElementLoad(min, 100);
-                    	click_On(min);
+                    	Thread.sleep(1000);
+                    	clickOn(min);
                     	ClearText(min);
                     	enterText(min, mins);
                     	
                     	WebElement sec = driver.findElementByAccessibilityId("Sec");
-                    	waitForElementLoad(sec, 100);
-                    	click_On(sec);
+                    	Thread.sleep(1000);
+                    	clickOn(sec);
                     	ClearText(sec);
                     	enterText(sec, secs);
                     	
                     	WebElement okPopup = driver.findElementByAccessibilityId("PromptQualificationStartPopupOKButton");
-                    	waitForElementLoad(okPopup, 100);
-                    	click_On(okPopup);
+                    	Thread.sleep(1000);
+                    	clickOn(okPopup);
                     }
                    }
                    catch (Exception e) {
@@ -559,11 +559,11 @@ public class assetDetailsPage extends BaseClass {
                                 return FetchText(PART_PickerButton);
                 }
 
-                public void click_OnDate()//
+                public void click_OnDate() throws InterruptedException//
                 {
                 	WebElement date = driver.findElementByAccessibilityId("PromptQualificationStartDateTimePopup").findElement(By.name(""));//  PART_PickerButton DropDownGlyph
-                	waitForElementLoad(date, 100);
-                	click_On(date);
+                	Thread.sleep(1000);
+                	clickOn(date);
                 }
                 public  void selectReqDate(String mon, String dt, String yr) throws InterruptedException
             	{
@@ -579,7 +579,7 @@ public class assetDetailsPage extends BaseClass {
             				WebElement month = driver.findElementByAccessibilityId("PART_Popup").findElement(By.name(mon));
             				if(IsElementVisibleStatus(month))
             				{
-            					waitForElementLoad(month, 100);
+            					Thread.sleep(1000);
             					clickOn(month);
             					break;
             				}
@@ -597,7 +597,7 @@ public class assetDetailsPage extends BaseClass {
             				WebElement date = driver.findElementByAccessibilityId("PART_Popup").findElement(By.name(dt));
             				if(IsElementVisibleStatus(date))
             				{
-            					waitForElementLoad(date, 100);
+            					Thread.sleep(1000);
             					clickOn(date);
             					break;
             				}
@@ -615,7 +615,7 @@ public class assetDetailsPage extends BaseClass {
             				WebElement year = driver.findElementByAccessibilityId("PART_Popup").findElement(By.name(yr));
             				if(IsElementVisibleStatus(year))
             				{
-            					waitForElementLoad(year, 100);
+            					Thread.sleep(1000);
             					clickOn(year);
             					break;
             				}
@@ -625,8 +625,8 @@ public class assetDetailsPage extends BaseClass {
             			}
             		}
             		WebElement okBtn = driver.findElementByAccessibilityId("PART_SelectorOKButton");
-            		waitForElementLoad(okBtn, 100);
-            		click_On(okBtn);
+            		Thread.sleep(1000);
+            		clickOn(okBtn);
             	}
                 
 //fetch Hour from Time Of The Day window

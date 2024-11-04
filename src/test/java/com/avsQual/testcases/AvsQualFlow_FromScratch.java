@@ -326,7 +326,6 @@ public class AvsQualFlow_FromScratch extends BaseClass {
 			QualificationStudyPage.click_OkPopup1();
 			QualificationStudyPage.click_DeleteBtn();
 			
-		//	QualificationStudyPage.waitForStopBtnDisabled();
 			QualificationStudyPage.waitForSaveBtnEabled();
 		try
 		{
@@ -470,7 +469,6 @@ public class AvsQualFlow_FromScratch extends BaseClass {
 				HardwarePage.click_DltBtn();
 				QualificationStudyPage = HardwarePage.click_BackBtn();
 					
-		//		QualificationStudyPage.waitForStopBtnEnabled();
 				QualificationStudyPage.waitForStartExpoBtnEabled();
 				int startExpo = Integer.parseInt(StartExpo_Time);
 					TimeUnit.MINUTES.sleep(startExpo);
@@ -489,7 +487,7 @@ public class AvsQualFlow_FromScratch extends BaseClass {
 				
 				TimeUnit.MINUTES.sleep(time);
 				
-				QualificationStudyPage.stop_QualStudy(200);
+				QualificationStudyPage.click_StopQualStudy();
 				QualificationStudyPage.click_YesBtn();	
 				UserLoginPopup(getUID("adminFull"), getPW("adminFull"));
 				QualificationStudyPage.click_DeleteBtn();
@@ -504,10 +502,7 @@ public class AvsQualFlow_FromScratch extends BaseClass {
 		Thread.sleep(1000);
 		assetHubPage = MainHubPage.Click_AssetTile2();
 		assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
-//		assetDetailsPage.select_Setup(SetupName);
-//		assetDetailsPage.click_QualTile();
-//		Thread.sleep(2000);
-//		
+	
 		//Qualification Count after study
 		int afterStudyCnt = assetDetailsPage.QualificationCnt();
 		

@@ -71,10 +71,10 @@ public class QualificationStudyPage extends BaseClass{
 	}
 	
 	//click on Start Qualification study
-	public void click_StartQualBtn()
+	public void click_StartQualBtn() throws InterruptedException
 	{
 		WebElement startQual = driver.findElementByAccessibilityId("btnQSStartQualificaton");
-		waitForElementLoad(startQual, 2000);
+		Thread.sleep(2000);
 		clickOn(startQual);
 	}
 	public void click_YesBtn() throws InterruptedException
@@ -83,14 +83,14 @@ public class QualificationStudyPage extends BaseClass{
     	Thread.sleep(1000);
     	clickOn(yesBtn);
     }
+	 public void stop_QualStudy(int time)
+	    {
+	    	WebElement stopQual = driver.findElementByAccessibilityId("btnQSStopQualificaton");
+	    	waitTime(stopQual, time);
+	    	waitForElementLoad(stopQual, 100);
+	    	clickOn(stopQual);
+	    }
     
-    public void stop_QualStudy(int time)
-    {
-    	WebElement stopQual = driver.findElementByAccessibilityId("btnQSStopQualificaton");
-    	waitTime(stopQual, time);
-    	waitForElementLoad(stopQual, 100);
-    	clickOn(stopQual);
-    }
     public void click_StopQualStudy() throws InterruptedException
     {
     	WebElement stopQual = driver.findElementByAccessibilityId("btnQSStopQualificaton");
@@ -132,16 +132,9 @@ public class QualificationStudyPage extends BaseClass{
 }
     public void click_DeleteBtn() throws InterruptedException
     {
-    	try
-    	{
-    		WebElement deleteBtn = driver.findElementByAccessibilityId("btnDelete");
+    	WebElement deleteBtn = driver.findElementByAccessibilityId("btnDelete");
     	Thread.sleep(2000);
-   // 	waitForElementInVisible(deleteBtn);
     	clickOn(deleteBtn);
-    	}
-    	catch (Exception e) {
-			e.getMessage();
-		}
     }
     public boolean is_DltBtnVisible()
     {
@@ -161,33 +154,19 @@ public class QualificationStudyPage extends BaseClass{
     public void click_SaveBtn() throws InterruptedException
     {
     	WebElement saveBtn = driver.findElementByAccessibilityId("btnSaveStudyFile");
-    try
-    {
-    	waitForElementLoad(saveBtn, 100);
     	Thread.sleep(3000);
-    	clickOn(saveBtn);
-    }
-    catch (Exception e) {
-    	saveBtn = driver.findElementByAccessibilityId("btnSaveStudyFile");
-    	waitForElementLoad(saveBtn, 100);
-    	Thread.sleep(3000);
-    	clickOn(saveBtn);
-	}
-    	
+    	clickOn(saveBtn);	
     }
     public void click_OkPopup2() throws InterruptedException
     {
-    	//StopQualifCalibStudyFileNameTextBox
-    	//StopQualifCalibCommentsTextBox
-    	//StopQualifCalibPopupCLoseButton
     	WebElement okBtn = driver.findElementByAccessibilityId("StopQualifCalibOKButton");
     	Thread.sleep(2000);
     	clickOn(okBtn);
     }
-    public void click_OkPopup1()
+    public void click_OkPopup1() throws InterruptedException
     {
     	WebElement okPopUp = driver.findElementByAccessibilityId("QualFileratePopupOKButton");
-    	waitForElementLoad(okPopUp, 1000);
+    	Thread.sleep(2000);
     	clickOn(okPopUp);
     }
     public MainHubPage click_BackBtn() throws IOException, InterruptedException
@@ -220,17 +199,6 @@ public class QualificationStudyPage extends BaseClass{
     	try
     	{
     	List<WebElement> text = messageBox.get(0).findElements(By.className("TextBlock"));
-/*    	boolean status = false;
-    	try
-    	{
-    		IsElementVisibleStatus(text.get(1));
-    			status = true;
-    		}
-    		catch (Exception e) {
-				status = false;
-			}
-    	return status;*/
-    	waitForElementVisible(text.get(1));
     	val = FetchText(text.get(1));
     	}
     	catch (Exception e) {
@@ -248,38 +216,47 @@ public class QualificationStudyPage extends BaseClass{
     		break;
     	}
     	}
-//    	Thread.sleep(1000);
-//    	click_DeleteBtn(); 
- //   	waitForElementInVisible(quitQualBtn);
+
     	
     }
     public void waitForSaveBtnEabled() throws InterruptedException
     {
-  /*  	while(is_SaveBtnEnabled() == true)
+    	while(is_SaveBtnEnabled() == true)
     	{
-    	waitForElementEnabled(saveStudy);
     	if(is_SaveBtnEnabled() == false)
     	{
     		break;
     	}
-    	} */
+    	} 
+    
+    }
+    public boolean is_QualStartBtnEnabled()
+    {
+    	boolean status = false;
+    	
     	try
     	{
-    	waitForElementEnabled(saveStudy);
+    		if(IsElementEnabledStatus(startExposure)) 
+    		{
+    		status = true;
+    		}
     	}
     	catch (Exception e) {
-			e.getMessage();
+    		status = false;
 		}
+    	return status;
     }
     public void waitForStartExpoBtnEabled() throws InterruptedException
     {
-    	try
+    	
+    	while(is_QualStartBtnEnabled() == true)
     	{
-    	waitForElementEnabled(startExposure);
+    	if(is_QualStartBtnEnabled() == false)
+    	{
+    		break;
     	}
-    	catch (Exception e) {
-			e.getMessage();
-		}
+    	}
+    	
     }
     public void waitForStopQualBtnVisible()
     {
@@ -287,7 +264,8 @@ public class QualificationStudyPage extends BaseClass{
     	try
     	{
     		WebElement stopQual = driver.findElementByAccessibilityId("btnQSStopQualificaton");
-    		waitForElementVisible(stopQual);
+    		Thread.sleep(3000);
+    		IsElementVisibleStatus(stopQual);
     	}
     	catch (Exception e) {
 			e.printStackTrace();
@@ -313,7 +291,6 @@ public class QualificationStudyPage extends BaseClass{
     	
     	while(is_QualStopBtnEnabled() == true)
     	{
- //   	waitForElementEnabled(quitQualBtn);
     	if(is_QualStopBtnEnabled() == false)
     	{
     		break;
@@ -326,8 +303,7 @@ public class QualificationStudyPage extends BaseClass{
     public void click_OnCloseBtn()
     {
     	WebElement clocseBtn = driver.findElementByAccessibilityId("QualParameterPopup").findElement(By.className("Button"));// QualParameterPopupClose
-    //	waitForElementLoad(clocseBtn, 100);
-    	click_On(clocseBtn);
+    	clickOn(clocseBtn);
     }
     
     public void click_SetupPara()
@@ -338,10 +314,10 @@ public class QualificationStudyPage extends BaseClass{
     	act.moveToElement(cal).build().perform();
     }
     
-    public void click_SetupBtn()
+    public void click_SetupBtn() throws InterruptedException
     {
-    	waitForElementLoad(setupBtn, 100);
-    	click_On(setupBtn);
+    	Thread.sleep(2000);
+    	clickOn(setupBtn);
     }
     
     public void click_VrtclSmlIncrs()
@@ -367,33 +343,30 @@ public class QualificationStudyPage extends BaseClass{
     public String get_StartExpoVal()
     {
     	WebElement startExpo = driver.findElementByAccessibilityId("StartExposureTextBlock");
-    //	waitForElementLoad(startExpo, 100);
     	return FetchText(startExpo);
     }
-    public void click_StartExpo()
+    public void click_StartExpo() throws InterruptedException
     {
     	//WebElement startExpo = driver.findElementByAccessibilityId("StartExposureTextBlock");
     	
-    	waitForElementLoad(startExposure, 100);
+    	Thread.sleep(1000);
     	clickOn(startExposure);
     }
   
     public String get_StopExpoVal()
     {
     	WebElement stopExpo = driver.findElementByAccessibilityId("StopExposureTextBlock");
-    //	waitForElementLoad(stopExpo, 100);
     	return FetchText(stopExpo);
     }
-    public void click_StopExpo()
+    public void click_StopExpo() throws InterruptedException
     {
-    	waitForElementLoad(stopExposure, 100);
+    	Thread.sleep(2000);
     	clickOn(stopExposure);
     }
     
     public String get_StopQual()
     {
     	WebElement stopQual = driver.findElementByAccessibilityId("StopQualificationTextBlock");
-    //	waitForElementLoad(stopQual, 100);
     	return FetchText(stopQual);
     }
     

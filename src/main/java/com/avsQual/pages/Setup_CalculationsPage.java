@@ -166,11 +166,11 @@ public class Setup_CalculationsPage extends BaseClass {
 		return FetchText(item.get(num));
 	}
 	//click on calculations items
-	public void click_calculationItem(int num)
+	public void click_calculationItem(int num) throws InterruptedException
 	{
 		List<WebElement> item = driver.findElementByAccessibilityId("CalculationTypesListBox")
 				.findElements(By.className("TextBlock"));
-		waitForElementLoad(item.get(num), 100);
+		Thread.sleep(2000);
 		clickOn(item.get(num));
 	}
 	//context click
@@ -335,10 +335,10 @@ public class Setup_CalculationsPage extends BaseClass {
 		return IsElementVisibleStatus(callith);
 	}
 	//click on lithelity combo box
-	public void clcik_CalLithComboBox()
+	public void clcik_CalLithComboBox() throws InterruptedException
 	{
 		WebElement callith = driver.findElementByAccessibilityId("CalculateLethalityComboBox");
-		waitForElementLoad(callith, 100);
+		Thread.sleep(2000);
 		clickOn(callith);
 	}
 	public String get_TxtCalethCmbBx()
@@ -491,7 +491,7 @@ public class Setup_CalculationsPage extends BaseClass {
 		{
 			if(FetchText(cond).equalsIgnoreCase(name))
 			{
-				click_On(cond);
+				clickOn(cond);
 				break;
 			}
 		}	
@@ -501,7 +501,7 @@ public class Setup_CalculationsPage extends BaseClass {
 				try
 				{
 				WebElement condition_Value = driver.findElementByAccessibilityId("LethalityCondtionValueTextBox");
-				waitForElementLoad(condition_Value, 100);
+				Thread.sleep(2000);
 				String valu = Integer.toString(val);
 				enterText(condition_Value, valu);
 				}
@@ -510,123 +510,7 @@ public class Setup_CalculationsPage extends BaseClass {
 				}
 			}
 			}
-//		if(uservalue.equalsIgnoreCase("Undefined"))
-//		{
-//			WebElement undefined = driver.findElementByName("Undefined");
-//			click_On(undefined);
-//		}
-//		else if(uservalue.equalsIgnoreCase("While Min Temp"))
-//		{
-//			WebElement minTep = driver.findElementByXPath("//*[normalize-space(.='While Min Temp')]");
-//			waitForElementLoad(minTep, 100);
-//			click_On(minTep);
-//			try
-//			{
-//			WebElement condition_Value = driver.findElementByAccessibilityId("LethalityCondtionValueTextBox");
-//			waitForElementLoad(condition_Value, 100);
-//			String valu = Integer.toString(val);
-//			enterText(condition_Value, valu);
-//			}
-//			catch (Exception e) {
-//				e.getMessage();
-//			}
-//		}
-//		else if(uservalue.equalsIgnoreCase("While Max Temp"))
-//		{
-//			WebElement maxTep = driver.findElementByXPath("//*[normalize-space(.='While Max Temp')]");
-//			waitForElementLoad(maxTep, 100);
-//			click_On(maxTep);
-//			try
-//			{
-//			WebElement condition_Value1 = driver.findElementByAccessibilityId("LethalityCondtionValueTextBox");
-//			waitForElementLoad(condition_Value1, 100);
-//			String valu1 = Integer.toString(val);
-//			enterText(condition_Value1, valu1);
-//			}
-//			catch (Exception e) {
-//				e.getMessage();
-//			}
-//		}
-//		else if(uservalue.equalsIgnoreCase("During Exposure Cycle"))
-//		{
-//			WebElement expoCyc = driver.findElementByXPath("//*[normalize-space(.='During Exposure Cycle')]");
-//			click_On(expoCyc);
-//		}
-//		else if(uservalue.equalsIgnoreCase("During Exposure Cycle"))
-//		{
-//			WebElement expoCyc = driver.findElementByXPath("//*[normalize-space(.='During Exposure Cycle')]");
-//			click_On(expoCyc);
-//		}
-//		
-		
-//		switch(uservalue)
-//		{
-//		case "Undefined":
-//			WebElement undefined = driver.findElementByName("Undefined");
-//			click_On(undefined);
-//			break;
-//			
-//		case "While Min Temp":
-//			WebElement minTep = driver.findElementByXPath("//*[normalize-space(.='While Min Temp')]");
-//			waitForElementLoad(minTep, 100);
-//			click_On(minTep);
-//			WebElement condition_Value = driver.findElementByAccessibilityId("LethalityCondtionValueTextBox");
-//			waitForElementLoad(condition_Value, 100);
-//			String valu = Integer.toString(val);
-//			enterText(condition_Value, valu);
-//			break;
-//			
-//		case "While Max Temp":
-//			WebElement maxTep = driver.findElementByXPath("//*[normalize-space(.='While Max Temp')]");
-//			waitForElementLoad(maxTep, 100);
-//			click_On(maxTep);
-//			WebElement condition_Value1 = driver.findElementByAccessibilityId("LethalityCondtionValueTextBox");
-//			waitForElementLoad(condition_Value1, 100);
-//			String valu1 = Integer.toString(val);
-//			enterText(condition_Value1, valu1);
-//			break;
-//			
-//		case "During Exposure Cycle":
-//			WebElement expoCyc = driver.findElementByXPath("//*[normalize-space(.='During Exposure Cycle')]");
-//			click_On(expoCyc);
-//			break;
-//			
-//		default: 
-//			System.out.println("Please Enter Matching Condition");
-//			break;
-//		
-//		}
-	
-//	public void click_ReqCond(String val)
-//	{
-//		WebElement eq1 = driver.findElementByName("=");
-//		WebElement eq2 = driver.findElementByName("<");
-//		WebElement eq3 = driver.findElementByName(">=");
-//		WebElement eq4 = driver.findElementByName("<=");
-//		WebElement eq5 = driver.findElementByName(">");
-//		
-//		if(val.equals(FetchText(eq1)))
-//		{
-//			clickOn(eq1);
-//		}
-//		else if(val.equals(FetchText(eq2)))
-//		{
-//			clickOn(eq2);
-//		}
-//		else if(val.equals(FetchText(eq3)))
-//		{
-//			clickOn(eq3);
-//		}
-//		else if(val.equals(FetchText(eq4)))
-//		{
-//			clickOn(eq4);
-//		}
-//		else if(val.equals(FetchText(eq5)))
-//		{
-//			clickOn(eq5);
-//		}
-//		
-//	}
+
 	public String isConditionalOperatorsVisible(int number) throws InterruptedException
 	{
 		List<WebElement> operator = driver.findElementByAccessibilityId("EventsConditionComparerComboBox")
@@ -635,31 +519,7 @@ public class Setup_CalculationsPage extends BaseClass {
 		return FetchText(operator.get(number));
 	}
 	
-//	public boolean is_EqualOperatorVisible()
-//	{
-//		WebElement eq = driver.findElementByName("=");
-//			return IsElementVisibleStatus(eq);
-//	}
-//	public boolean is_LessThanOperatorVisible()
-//	{
-//		WebElement eq = driver.findElementByName("<");
-//			return IsElementVisibleStatus(eq);
-//	}
-//	public boolean is_LessThanEqualOPeratorVisible()
-//	{
-//		WebElement eq = driver.findElementByName("<=");
-//			return IsElementVisibleStatus(eq);
-//	}
-//	public boolean is_GrtrEqualOperatorVisible()
-//	{
-//		WebElement eq = driver.findElementByName(">=");
-//			return IsElementVisibleStatus(eq);
-//	}
-//	public boolean is_GrtrThanVisible()
-//	{
-//		WebElement eq = driver.findElementByName(">");
-//			return IsElementVisibleStatus(eq);
-//	}
+
 	public void entertxt_LithCondValue(String val)
 	{
 		WebElement lethval = driver.findElementByAccessibilityId("LethalityCondtionValueTextBox");
@@ -843,7 +703,7 @@ public class Setup_CalculationsPage extends BaseClass {
 
 	// Click the Next button to move to Setup Qualification page
 	public Setup_CalVerParametersPage Click_NxtBtn() throws IOException, InterruptedException {
-		waitForElementLoad(NxtBtn, 100);
+		Thread.sleep(2000);
 		clickOn(NxtBtn);
 		return new Setup_CalVerParametersPage();
 	}

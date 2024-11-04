@@ -194,8 +194,7 @@ public class Setup_QualParamPage extends BaseClass {
 	public void click_OnDate()
     {
     	WebElement date = driver.findElementByAccessibilityId("DropDownGlyph").findElement(By.name("")); //PART_PickerButton
-    	waitForElementLoad(date, 100);
-    	click_On(date);
+    	clickOn(date);
     }
 	//Select Value from Start Qualification Drop Down
 	public void select_DropDownOptionFromStrtQual(String val, String mon, String dt, String yr, String hr, String min, String sec, String cond, String qualTemp) throws InterruptedException
@@ -244,7 +243,7 @@ public class Setup_QualParamPage extends BaseClass {
     				WebElement month = driver.findElementByAccessibilityId("PART_Popup").findElement(By.name(mon));
     				if(IsElementVisibleStatus(month))
     				{
-    					waitForElementLoad(month, 100);
+    					Thread.sleep(3000);
     					clickOn(month);
     					break;
     				}
@@ -262,7 +261,7 @@ public class Setup_QualParamPage extends BaseClass {
     				WebElement date = driver.findElementByAccessibilityId("PART_Popup").findElement(By.name(dt));
     				if(IsElementVisibleStatus(date))
     				{
-    					waitForElementLoad(date, 100);
+    					Thread.sleep(2000);
     					clickOn(date);
     					break;
     				}
@@ -280,7 +279,7 @@ public class Setup_QualParamPage extends BaseClass {
     				WebElement year = driver.findElementByAccessibilityId("PART_Popup").findElement(By.name(yr));
     				if(IsElementVisibleStatus(year))
     				{
-    					waitForElementLoad(year, 100);
+    					Thread.sleep(2000);
     					clickOn(year);
     					break;
     				}
@@ -290,24 +289,24 @@ public class Setup_QualParamPage extends BaseClass {
     			}
     		}
     		WebElement okBtn = driver.findElementByAccessibilityId("PART_SelectorOKButton");
-    		waitForElementLoad(okBtn, 100);
-    		click_On(okBtn);
+    		Thread.sleep(2000);
+    		clickOn(okBtn);
 			
 			WebElement hour= driver.findElementByAccessibilityId("Hours");
 			WebElement minu= driver.findElementByAccessibilityId("Min");
 			WebElement secunds= driver.findElementByAccessibilityId("Sec");
-			waitForElementLoad(hour, 100);
-			click_On(hour);
+			Thread.sleep(2000);
+			clickOn(hour);
 			ClearText(hour);
 			enterText(hour, hr);
 			
-			waitForElementLoad(minu, 100);
-			click_On(minu);
+			Thread.sleep(2000);
+			clickOn(minu);
 			ClearText(minu);
 			enterText(minu, min);
 			
-			waitForElementLoad(secunds, 100);
-			click_On(secunds);
+			Thread.sleep(2000);
+			clickOn(secunds);
 			ClearText(secunds);
 			enterText(secunds, sec);
 		}
@@ -315,16 +314,16 @@ public class Setup_QualParamPage extends BaseClass {
 		else if(FetchText(Qval).equalsIgnoreCase("Temp1")||FetchText(Qval).equalsIgnoreCase("Temp2")||FetchText(Qval).equalsIgnoreCase("Temp48"))
 		{
 			WebElement compareComboBox = driver.findElementByAccessibilityId("StartQualificationComparerComboBox");
-			waitForElementLoad(compareComboBox, 100);
-			click_On(compareComboBox);
+			Thread.sleep(2000);
+			clickOn(compareComboBox);
 		
 			WebElement item = compareComboBox.findElement(By.name(cond));
-			waitForElementLoad(item, 100);
-			click_On(item);
+			Thread.sleep(2000);
+			clickOn(item);
 			
 			WebElement QualTxtBox = driver.findElementByAccessibilityId("StartQualificationTextBox");
-			waitForElementLoad(QualTxtBox, 100);
-			click_On(QualTxtBox);
+			Thread.sleep(2000);
+			clickOn(QualTxtBox);
 			ClearText(QualTxtBox);
 			enterText(QualTxtBox, qualTemp);
 		}
@@ -351,18 +350,18 @@ public class Setup_QualParamPage extends BaseClass {
 			WebElement hour= driver.findElementByAccessibilityId("HoursStartExposure");
 			WebElement minu= driver.findElementByAccessibilityId("MinStartExposure");
 			WebElement secunds= driver.findElementByAccessibilityId("SecStartExposure");
-			waitForElementLoad(hour, 100);
-			click_On(hour);
+			Thread.sleep(2000);
+			clickOn(hour);
 			ClearText(hour);
 			enterText(hour, hr);
 			
-			waitForElementLoad(minu, 100);
-			click_On(minu);
+			Thread.sleep(2000);
+			clickOn(minu);
 			ClearText(minu);
 			enterText(minu, min);
 			
-			waitForElementLoad(secunds, 100);
-			click_On(secunds);
+			Thread.sleep(2000);
+			clickOn(secunds);
 			ClearText(secunds);
 			enterText(secunds, sec);
 		}
@@ -371,16 +370,16 @@ public class Setup_QualParamPage extends BaseClass {
 				fetch_DfltTxtFromStartExpoCombo().equalsIgnoreCase("Temp1"))
 		{
 			WebElement compareComboBox = driver.findElementByAccessibilityId("StartExposureComparerComboBox");
-			waitForElementLoad(compareComboBox, 100);
-			click_On(compareComboBox);
+			Thread.sleep(2000);
+			clickOn(compareComboBox);
 		
 			WebElement item = compareComboBox.findElement(By.name(cond));
-			waitForElementLoad(item, 100);
-			click_On(item);
+			Thread.sleep(2000);
+			clickOn(item);
 			
 			WebElement QualTxtBox = driver.findElementByAccessibilityId("StartExposureTextBox");
-			waitForElementLoad(QualTxtBox, 100);
-			click_On(QualTxtBox);
+			Thread.sleep(2000);
+			clickOn(QualTxtBox);
 			ClearText(QualTxtBox);
 			enterText(QualTxtBox, qualTemp);
 		}
@@ -406,18 +405,18 @@ public class Setup_QualParamPage extends BaseClass {
 			WebElement hour= driver.findElementByAccessibilityId("HoursStopExposure");
 			WebElement minu= driver.findElementByAccessibilityId("MinStopExposure");
 			WebElement secunds= driver.findElementByAccessibilityId("SecStopExposure");
-			waitForElementLoad(hour, 100);
-			click_On(hour);
+			Thread.sleep(2000);
+			clickOn(hour);
 			ClearText(hour);
 			enterText(hour, hr);
 			
-			waitForElementLoad(minu, 100);
-			click_On(minu);
+			Thread.sleep(2000);
+			clickOn(minu);
 			ClearText(minu);
 			enterText(minu, min);
 			
-			waitForElementLoad(secunds, 100);
-			click_On(secunds);
+			Thread.sleep(2000);
+			clickOn(secunds);
 			ClearText(secunds);
 			enterText(secunds, sec);
 		}
@@ -426,16 +425,16 @@ public class Setup_QualParamPage extends BaseClass {
 				fetch_DfltTxtFromStartExpoCombo().equalsIgnoreCase("Min Accum Leth")||fetch_DfltTxtFromStartExpoCombo().equalsIgnoreCase("Temp1"))
 		{
 			WebElement compareComboBox = driver.findElementByAccessibilityId("StopExposureComparerComboBox");
-			waitForElementLoad(compareComboBox, 100);
-			click_On(compareComboBox);
+			Thread.sleep(2000);
+			clickOn(compareComboBox);
 		
 			WebElement item = compareComboBox.findElement(By.name(cond));
-			waitForElementLoad(item, 100);
-			click_On(item);
+			Thread.sleep(2000);
+			clickOn(item);
 			
 			WebElement QualTxtBox = driver.findElementByAccessibilityId("StopExposureTextBox");
-			waitForElementLoad(QualTxtBox, 100);
-			click_On(QualTxtBox);
+			Thread.sleep(2000);
+			clickOn(QualTxtBox);
 			ClearText(QualTxtBox);
 			enterText(QualTxtBox, qualTemp);
 		}
@@ -460,18 +459,18 @@ public class Setup_QualParamPage extends BaseClass {
 			WebElement hour= driver.findElementByAccessibilityId("HoursStopQualification");
 			WebElement minu= driver.findElementByAccessibilityId("MinStopQualification");
 			WebElement secunds= driver.findElementByAccessibilityId("SecStopQualification");
-			waitForElementLoad(hour, 100);
-			click_On(hour);
+			Thread.sleep(2000);
+			clickOn(hour);
 			ClearText(hour);
 			enterText(hour, hr);
 			
-			waitForElementLoad(minu, 100);
-			click_On(minu);
+			Thread.sleep(2000);
+			clickOn(minu);
 			ClearText(minu);
 			enterText(minu, min);
 			
-			waitForElementLoad(secunds, 100);
-			click_On(secunds);
+			Thread.sleep(2000);
+			clickOn(secunds);
 			ClearText(secunds);
 			enterText(secunds, sec);
 		}
@@ -479,16 +478,16 @@ public class Setup_QualParamPage extends BaseClass {
 		else if(getTxt_of_QstopDrpDwn().equalsIgnoreCase("Temp1")||getTxt_of_QstopDrpDwn().equalsIgnoreCase("Temp2")||getTxt_of_QstopDrpDwn().equalsIgnoreCase("Min Accum Leth"))
 		{
 			WebElement compareComboBox = driver.findElementByAccessibilityId("StopQualificationComparerComboBox");
-			waitForElementLoad(compareComboBox, 100);
-			click_On(compareComboBox);
+			Thread.sleep(2000);
+			clickOn(compareComboBox);
 		
 			WebElement item = compareComboBox.findElement(By.name(cond));
-			waitForElementLoad(item, 100);
-			click_On(item);
+			Thread.sleep(2000);
+			clickOn(item);
 			
 			WebElement QualTxtBox = driver.findElementByAccessibilityId("StopQualificationTextBox");
-			waitForElementLoad(QualTxtBox, 100);
-			click_On(QualTxtBox);
+			Thread.sleep(2000);
+			clickOn(QualTxtBox);
 			ClearText(QualTxtBox);
 			enterText(QualTxtBox, qualTemp);
 		}
@@ -1385,7 +1384,7 @@ public class Setup_QualParamPage extends BaseClass {
 			}
 		} */
 		
-		waitForElementLoad(SR_DrpDwn, 100);
+		Thread.sleep(2000);
 		click_SR_DrpDwnBox();
 		click_SR_DrpDwnBox();
 		Thread.sleep(1000);

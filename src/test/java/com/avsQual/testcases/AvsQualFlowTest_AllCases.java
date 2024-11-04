@@ -185,6 +185,7 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 		{
 			extentTest = extent.startTest(SetupName);
 			SoftAssert sa = new SoftAssert();
+			System.out.println("welcome");
 
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
 			
@@ -215,7 +216,6 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 				QualificationStudyPage.click_OkPopup1();
 				QualificationStudyPage.click_DeleteBtn();
 				
-			//	QualificationStudyPage.waitForStopBtnDisabled();
 				QualificationStudyPage.waitForSaveBtnEabled();
 			try
 			{
@@ -286,7 +286,6 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 					QualificationStudyPage.click_OkPopup1();
 					QualificationStudyPage.click_DeleteBtn();
 					
-			//		int startExpo = Integer.parseInt(StartExpo_Time);
 					TimeUnit.MINUTES.sleep(3);
 					
 					QualificationStudyPage.click_StartExpo();
@@ -294,7 +293,6 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 					QualificationStudyPage.click_DeleteBtn();
 					
 					QualificationStudyPage.waitForStopQualBtnVisible();
-			//		int time = Integer.parseInt(wait_Time);
 
 					TimeUnit.MINUTES.sleep(2);
 			
@@ -319,7 +317,6 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 				QualificationStudyPage.click_DeleteBtn();
 				
 				QualificationStudyPage.waitForStopQualBtnVisible();
-			//	int time = Integer.parseInt(wait_Time);
 				
 				TimeUnit.MINUTES.sleep(1);
 				
@@ -341,8 +338,6 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 				UserLoginPopup(getUID("adminFull"), getPW("adminFull"));
 				QualificationStudyPage.click_OkPopup1();
 				QualificationStudyPage.click_DeleteBtn();
-				
-			//	int time = Integer.parseInt(wait_Time);
 				
 				TimeUnit.MINUTES.sleep(4);
 				
@@ -366,26 +361,20 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 					HardwarePage.click_DltBtn();
 					QualificationStudyPage = HardwarePage.click_BackBtn();
 						
-			//		QualificationStudyPage.waitForStopBtnEnabled();
 					QualificationStudyPage.waitForStartExpoBtnEabled();
-			//		int startExpo = Integer.parseInt(StartExpo_Time);
 						TimeUnit.MINUTES.sleep(2);
 						QualificationStudyPage.click_StartExpo();
 						QualificationStudyPage.click_YesBtn();	
 						QualificationStudyPage.click_DeleteBtn();
-				
-				//	int stopExpo = Integer.parseInt(StopExpo_Time);
-				
+								
 						TimeUnit.MINUTES.sleep(4);
 						QualificationStudyPage.click_StopExpo();
 						QualificationStudyPage.click_YesBtn();	
 						QualificationStudyPage.click_DeleteBtn();
-					
-			//		int time = Integer.parseInt(wait_Time);
-					
+										
 					TimeUnit.MINUTES.sleep(6);
 					
-					QualificationStudyPage.stop_QualStudy(200);
+					QualificationStudyPage.click_StopQualStudy();
 					QualificationStudyPage.click_YesBtn();	
 					UserLoginPopup(getUID("adminFull"), getPW("adminFull"));
 					QualificationStudyPage.click_DeleteBtn();
@@ -400,7 +389,6 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 			Thread.sleep(1000);
 			assetHubPage = MainHubPage.Click_AssetTile2();
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
-//			assetDetailsPage.select_Setup(SetupName);
 			assetDetailsPage.click_QualTile();
 			Thread.sleep(2000);
 //			

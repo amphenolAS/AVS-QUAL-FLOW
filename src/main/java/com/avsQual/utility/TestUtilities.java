@@ -629,22 +629,9 @@ public class TestUtilities extends BaseClass {
 	// Click the OK button of the popup message
 	public void click_OK_popup() throws InterruptedException {
 		WebElement Ok_Btn = driver.findElementByAccessibilityId("Button0");
-		//Thread.sleep(1000);
-		//clickOn(Ok_Btn);
+		Thread.sleep(1000);
+		clickOn(Ok_Btn);
 
-			  try{
-				  waitForElementVisible(Ok_Btn);
-				  Thread.sleep(30000);
-				 click_On(Ok_Btn);
-			    
-			  }
-			  catch(Exception e){
-			WebElement Ok_Btn1 = driver.findElementByAccessibilityId("Button0");  
-			waitForElementVisible(Ok_Btn);
-			Thread.sleep(30000);
-			 click_On(Ok_Btn);
-			  }
-			  
 	}	
 	
 	//click cancel popup
@@ -658,35 +645,13 @@ public class TestUtilities extends BaseClass {
 	// Click the Yes button of the popup message 
 	public void click_YesBtn_popup() throws InterruptedException {
 		WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
-		
-		try
-		{
-			waitForElementLoad(Yes_Btn, 5000);
-			Thread.sleep(2000);
-			click_On(Yes_Btn);
-		}
-		catch (Exception e) {
-			Yes_Btn = driver.findElementByAccessibilityId("Button1");
-			waitForElementLoad(Yes_Btn, 5000);
-			Thread.sleep(2000);
-			click_On(Yes_Btn);
-		}
-		
+		Thread.sleep(2000);
+		clickOn(Yes_Btn);
 	}
 	public void click_Yes_popup() throws InterruptedException {
 		WebElement Yes_Btn = driver.findElementByAccessibilityId("Button2");
-		
-		try
-		{
-			//waitForElementLoad(Yes_Btn, 5000);
-			click_On(Yes_Btn);
-		}
-		catch (Exception e) {
-			Yes_Btn = driver.findElementByAccessibilityId("Button2");
-			//waitForElementLoad(Yes_Btn, 5000);
-			click_On(Yes_Btn);
-		}
-		
+		Thread.sleep(2000);
+		clickOn(Yes_Btn);
 	}
 	
 	// Click the No button of the popup message
