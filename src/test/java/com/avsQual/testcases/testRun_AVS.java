@@ -29,7 +29,7 @@ public class testRun_AVS {
 
 		testng = new TestNG();
 		//testng.setTestClasses(new Class[] {HitNTrialTests.class});
-		testng.setTestClasses(new Class[] {SaveButtonEnable_Validation.class});
+		testng.setTestClasses(new Class[] {AVS_CaliberationTest.class});
 
 		testng.run();			
 	}

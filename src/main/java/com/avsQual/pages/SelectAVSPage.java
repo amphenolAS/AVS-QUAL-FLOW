@@ -70,9 +70,20 @@ public class SelectAVSPage extends BaseClass{
 	
 	public StartCaliberationPage click_CnnctBtn() throws InterruptedException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		clickOn(conctBtn);
-		tu.click_YesBtn_popup();
+		try
+		{
+			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
+			clickOn(Yes_Btn);
+		}
+		catch (Exception e) {
+			e.getMessage();
+		}
+		Thread.sleep(15000);
+		int explicitWaitTimeout = 100; 
+        driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
+
 		return new StartCaliberationPage();
 	}
 	//Click on connect Button  
@@ -159,6 +170,12 @@ public class SelectAVSPage extends BaseClass{
 			}
 			
 		}
+	}
+	
+	public void click_USBDocking()
+	{
+		WebElement usbDocking = driver.findElementByAccessibilityId("textUsbIp");
+		clickOn(usbDocking);
 	}
 	
 }

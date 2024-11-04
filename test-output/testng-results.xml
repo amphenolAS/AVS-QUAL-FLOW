@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-16T05:52:08Z" name="Default suite" finished-at="2024-10-16T05:53:30Z" duration-ms="81624">
+  <suite started-at="2024-10-22T06:38:12Z" name="Default suite" finished-at="2024-10-22T06:38:45Z" duration-ms="33207">
     <groups>
     </groups>
-    <test started-at="2024-10-16T05:52:08Z" name="Default test" finished-at="2024-10-16T05:53:30Z" duration-ms="81624">
+    <test started-at="2024-10-22T06:38:12Z" name="Default test" finished-at="2024-10-22T06:38:45Z" duration-ms="33207">
       <class name="com.avsQual.testcases.AVS_CaliberationTest">
-        <test-method is-config="true" signature="PreSetup()[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-16T11:22:08Z" name="PreSetup" finished-at="2024-10-16T11:22:59Z" duration-ms="51191" status="PASS">
+        <test-method is-config="true" signature="PreSetup()[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-22T12:08:12Z" name="PreSetup" finished-at="2024-10-22T12:08:12Z" duration-ms="165" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- PreSetup -->
-        <test-method is-config="true" signature="Setup()[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-16T11:22:59Z" name="Setup" finished-at="2024-10-16T11:23:24Z" duration-ms="24458" status="PASS">
+        <test-method is-config="true" signature="Setup()[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-22T12:08:13Z" name="Setup" finished-at="2024-10-22T12:08:41Z" duration-ms="27720" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Setup -->
-        <test-method signature="AVS_Calibearation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-16T11:23:24Z" name="AVS_Calibearation" data-provider="AVSCAL" finished-at="2024-10-16T11:23:29Z" duration-ms="5272" status="PASS">
+        <test-method signature="AVS_Calibearation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-22T12:08:41Z" name="AVS_Calibearation" data-provider="AVSCAL" finished-at="2024-10-22T12:08:45Z" duration-ms="4491" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -29,12 +29,12 @@
             </param>
             <param index="2">
               <value>
-                <![CDATA[10.17.18.94]]>
+                <![CDATA[192.168.1.2]]>
               </value>
             </param>
             <param index="3">
               <value>
-                <![CDATA[Ethernet IP-- 10.17.18.94]]>
+                <![CDATA[IP 192.168.1.2]]>
               </value>
             </param>
             <param index="4">
@@ -46,7 +46,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AVS_Calibearation -->
-        <test-method is-config="true" signature="Teardown(org.testng.ITestResult)[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-16T11:23:29Z" name="Teardown" finished-at="2024-10-16T11:23:29Z" duration-ms="40" status="PASS">
+        <test-method is-config="true" signature="Teardown(org.testng.ITestResult)[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-22T12:08:45Z" name="Teardown" finished-at="2024-10-22T12:08:45Z" duration-ms="46" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -57,7 +57,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Teardown -->
-        <test-method is-config="true" signature="endReport_releaseMomory()[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-16T11:23:29Z" name="endReport_releaseMomory" finished-at="2024-10-16T11:23:30Z" duration-ms="278" status="PASS">
+        <test-method is-config="true" signature="endReport_releaseMomory()[pri:0, instance:com.avsQual.testcases.AVS_CaliberationTest@5ba88be8]" started-at="2024-10-22T12:08:45Z" name="endReport_releaseMomory" finished-at="2024-10-22T12:08:45Z" duration-ms="265" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport_releaseMomory -->

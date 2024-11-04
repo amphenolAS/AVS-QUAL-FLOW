@@ -27,7 +27,7 @@ public class CaliberationUtility extends BaseClass {
 	
 	//Below Path will be used whle creating an Jar/exe file where the config file will be 
 	//placed present in the jar.exe path location.
-//	public static String TestData_sheetPath = System.getProperty("user.dir") + "/AVSQualFlow_TestData.xlsx";
+//	public static String TestData_sheetPath = System.getProperty("user.dir") + "/AVSCal_TestData.xlsx";
 
 
 	static Workbook book;

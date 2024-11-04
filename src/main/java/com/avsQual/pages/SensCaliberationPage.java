@@ -42,8 +42,10 @@ public class SensCaliberationPage extends BaseClass{
 		public void click_StartBtn() throws InterruptedException
 		{
 			clickOn(start);
+			Thread.sleep(1000);
 			WebElement yes = driver.findElementByName("Yes");
 			clickOn(yes);
+			Thread.sleep(1000);
 			UserLoginPopup(getUID("adminFull"), getPW("adminFull"));
 			tu.click_YesBtn_popup();
 		}
@@ -80,7 +82,7 @@ public class SensCaliberationPage extends BaseClass{
 			boolean status = false;
 			try
 			{
-				int explicitWaitTimeout = 50000; 
+				int explicitWaitTimeout = 20000; 
 		        driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
 				WebElement imgCheckSetpoint = driver.findElementByAccessibilityId("imgCheckSetpointDone");
 				status = IsElementVisibleStatus(imgCheckSetpoint);
@@ -90,6 +92,21 @@ public class SensCaliberationPage extends BaseClass{
 			}
 			
 			return status;
+			    	
+//			    	try
+//			    	{
+//			    		WebElement imgCheckSetpoint = driver.findElementByAccessibilityId("imgCheckSetpointDone");
+//			    		waitForElementVisible(imgCheckSetpoint);
+//			    	}
+//			    	catch (Exception e) {
+//						e.printStackTrace();
+//					}
+		}
+		
+		public void click_DeleteButton()
+		{
+			WebElement deleteButton = driver.findElementByAccessibilityId("btnDelete");
+			clickOn(deleteButton);
 		}
 
 

@@ -53,7 +53,7 @@ public class BaseClass {
 			prop = new Properties();
 			//Below Path will be used whle creating an Jar/exe file where the config file will be 
 			//placed present in the jar.exe path location.
-//			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/UserInput.properties");
+//			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/config.properties");
 
 			//Below Path will be used while executing scripts from Eclipse IDE.
 			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
@@ -249,7 +249,7 @@ public class BaseClass {
 	public boolean waitForElementVisible(WebElement element) {
 		boolean status = false;
 		try {
-			status=checkingVisibilityOfElement(element, 1000).isDisplayed();//86400 for 24 hr
+			status=checkingVisibilityOfElement(element, 50000).isDisplayed();//86400 for 24 hr
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
