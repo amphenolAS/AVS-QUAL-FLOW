@@ -53,10 +53,10 @@ public class BaseClass {
 			prop = new Properties();
 			//Below Path will be used whle creating an Jar/exe file where the config file will be 
 			//placed present in the jar.exe path location.
-			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/UserInput.properties");
+//			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/config.properties");
 
 			//Below Path will be used while executing scripts from Eclipse IDE.
-//			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
+			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
 //			FileInputStream fis = new FileInputStream("D:/UserInput.properties");
 			prop.load(fis);
 			
@@ -116,6 +116,22 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 	}
+	public void click_On(WebElement element) {
+		try {
+			checkingElementClickable(element, 1000).click(); //86400 for 24 hr
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void waitForElementEnabled(WebElement element) {
+		try {
+			checkingElementClickable(element, 4000);  //86400 for 24 hr
+		} catch (Exception e) {
+			checkingElementClickable(element, 4000); 
+		}
+	}
+
+	
 	//Check Visibility of the Element method
 		public boolean checkingInVisibilityOfElement(WebElement element, long WaitTime) {
 			return new WebDriverWait(driver, WaitTime).until(ExpectedConditions.invisibilityOf(element));
@@ -168,6 +184,24 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 	}
+	public void waitForElementLoad(WebElement element, int time)
+	{
+		try {
+			checkingVisibilityOfElement(element, time);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void waitTime(WebElement element, int time)
+	{
+		//WebDriverWait wait = new WebDriverWait(driver, time);
+		try {
+			checkingElementClickable(element, time);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	//Get Text for any Element method
 	public String FetchText(WebElement element) {
 		String text = null;
@@ -191,11 +225,40 @@ public class BaseClass {
 		return status;
 	}
 	
+//	public boolean IsElementEnabledStatus(WebElement element) {
+//		boolean status = false;
+//		try {
+//			status=checkingVisibilityOfElement(element, 20000).isEnabled();//86400 for 24 hr
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}			
+//		return status;
+//	}
+	
 	//Very if the Element is Visible or Not Method
 	public boolean IsElementVisibleStatus(WebElement element) {
 		boolean status = false;
 		try {
 			status=checkingVisibilityOfElement(element, 10).isDisplayed();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
+		return status;
+	}
+	
+	public boolean waitForElementVisible(WebElement element) {
+		boolean status = false;
+		try {
+			status=checkingVisibilityOfElement(element, 50000).isDisplayed();//86400 for 24 hr
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
+		return status;
+	}
+	public boolean waitForElementInVisible(WebElement element) {
+		boolean status = false;
+		try {
+			status=checkingInVisibilityOfElement(element, 1000);//86400 for 24 hr
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			

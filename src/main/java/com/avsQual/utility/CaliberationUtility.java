@@ -14,20 +14,20 @@ import org.testng.annotations.DataProvider;
 import com.avsQual.base.BaseClass;
 
 
-public class QualificationUtility extends BaseClass {
+public class CaliberationUtility extends BaseClass {
 
-	public QualificationUtility() throws IOException {
+	public CaliberationUtility() throws IOException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	// Read TestData from the Excel sheet
 	//Below Path will be used while executing scripts from Eclipse IDE.
-	public static String TestData_sheetPath = System.getProperty("user.dir") + "/src/test/resources/TestData/" + "AVSQualFlow_TestData.xlsx";
+	public static String TestData_sheetPath = System.getProperty("user.dir") + "/src/test/resources/TestData/" + "AVSCal_TestData.xlsx";
 	
 	//Below Path will be used whle creating an Jar/exe file where the config file will be 
 	//placed present in the jar.exe path location.
-//	public static String TestData_sheetPath = System.getProperty("user.dir") + "/AVSQualFlow_TestData.xlsx";
+//	public static String TestData_sheetPath = System.getProperty("user.dir") + "/AVSCal_TestData.xlsx";
 
 
 	static Workbook book;
@@ -69,22 +69,9 @@ public class QualificationUtility extends BaseClass {
 	// ADMIN module related Test Data reference
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	@DataProvider(name = "AVSQF")
-	public static Object[][] AVSQF() {
-		String sheetName = "AVSQFSheet";
-		Object[][] data = getTestData(sheetName);
-		return data;
-	}
-
-	@DataProvider(name = "SetupAVSQF")
-	public static Object[][] SetupAVSQF() {
-		String sheetName = "SetupsCreation";
-		Object[][] data = getTestData(sheetName);
-		return data;
-	}
-	@DataProvider(name = "SaveButton_Validation")
-	public static Object[][] SaveButton_Validation() {
-		String sheetName = "SaveButton_Validation";
+	@DataProvider(name = "AVSCAL")
+	public static Object[][] AVSCAL() {
+		String sheetName = "AVS_Cal";
 		Object[][] data = getTestData(sheetName);
 		return data;
 	}

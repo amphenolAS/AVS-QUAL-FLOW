@@ -83,6 +83,13 @@ public class QualificationStudyPage extends BaseClass{
     	Thread.sleep(1000);
     	clickOn(yesBtn);
     }
+	 public void stop_QualStudy(int time)
+	    {
+	    	WebElement stopQual = driver.findElementByAccessibilityId("btnQSStopQualificaton");
+	    	waitTime(stopQual, time);
+	    	waitForElementLoad(stopQual, 100);
+	    	clickOn(stopQual);
+	    }
     
     public void click_StopQualStudy() throws InterruptedException
     {

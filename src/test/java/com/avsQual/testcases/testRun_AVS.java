@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import org.testng.TestNG;
 
 import com.avsQual.ExtentReports.ExtentReporterNG;
-import com.avsQual.testcases.AvsQualFlow_FromScratch;
+import com.avsQual.testcases.SaveButtonEnable_Validation;
 
 public class testRun_AVS {
 
@@ -29,7 +29,7 @@ public class testRun_AVS {
 
 		testng = new TestNG();
 		//testng.setTestClasses(new Class[] {HitNTrialTests.class});
-		testng.setTestClasses(new Class[] {AvsQualFlow_FromScratch.class});
+		testng.setTestClasses(new Class[] {AVS_CaliberationTest.class});
 
 		testng.run();			
 	}

@@ -67,33 +67,79 @@ public class SelectAVSPage extends BaseClass{
 	{
 		clickOn(addBtn);
 	}
-	//Click on connect Button
+	
+	public StartCaliberationPage click_CnnctBtn() throws InterruptedException, IOException
+	{
+		Thread.sleep(3000);
+		clickOn(conctBtn);
+		try
+		{
+			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
+			clickOn(Yes_Btn);
+		}
+		catch (Exception e) {
+			e.getMessage();
+		}
+		Thread.sleep(15000);
+		int explicitWaitTimeout = 100; 
+        driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
+
+		return new StartCaliberationPage();
+	}
+	//Click on connect Button  
 	public QualificationStudyPage click_ConnectBtn() throws InterruptedException, IOException
 	{
 		Thread.sleep(2000);
 		clickOn(conctBtn);
 		
+		
+		try
+		{
+			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
+			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
+			waitForElementLoad(yesBtn, 10000);
+			Thread.sleep(1000);
+			click_On(yesBtn);
+			//tu.click_YesBtn_popup();
+		}
+		catch (Exception e) {
+			//WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
+			WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
+			waitForElementLoad(yesBtn, 10000);
+			Thread.sleep(1000);
+			click_On(yesBtn);
+		}
+		
+		Thread.sleep(10000);
+		try
+		{
 			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
 			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
 			Thread.sleep(1000);
 			clickOn(yesBtn);
 			//tu.click_YesBtn_popup();
-		
-		try
-		{
-			WebElement ethernet = driver.findElementByAccessibilityId("ConnectEthernetOption");
-			Thread.sleep(1000);
-			clickOn(ethernet);
 		}
 		catch (Exception e) {
-			e.getMessage();
+		e.getMessage();
 		}
+//		try
+//		{
+//			WebElement ethernet = driver.findElementByAccessibilityId("ConnectEthernetOption");
+//			waitForElementLoad(ethernet, 100);
+//			click_On(ethernet);
+//			System.out.println("5");
+//		}
+//		catch (Exception e) {
+//			e.getMessage();
+//		}
 		
 		Thread.sleep(15000);
-		
+		int explicitWaitTimeout = 200000; 
+        driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
+
 		return new QualificationStudyPage();
 	}
-	public String fetchTxt_FromAVSUnit(String ip) throws InterruptedException
+	public String fetchTxt_FromAVSUnit(String ip)
 	{
 		List<WebElement> ipAdd = driver.findElementsByAccessibilityId("textBlockIpAddress");
 		
@@ -103,7 +149,7 @@ public class SelectAVSPage extends BaseClass{
 			value = FetchText(AVSIP);
 			if(value.equals(ip))
 			{
-				Thread.sleep(1000);
+				waitForElementLoad(AVSIP, 1000);
 				break;
 			}
 		}
@@ -118,12 +164,18 @@ public class SelectAVSPage extends BaseClass{
 		{
 			if(ip.equals(FetchText(AVSIP)))
 			{
-				Thread.sleep(1000);
+				waitForElementLoad(AVSIP, 1000);
 				clickOn(AVSIP);
 				break;
 			}
 			
 		}
+	}
+	
+	public void click_USBDocking()
+	{
+		WebElement usbDocking = driver.findElementByAccessibilityId("textUsbIp");
+		clickOn(usbDocking);
 	}
 	
 }

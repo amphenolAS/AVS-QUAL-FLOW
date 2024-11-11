@@ -83,6 +83,7 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 			extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/ER_" + "Qualification_STARTTest" + ".html", true);
 			extent.addSystemInfo("TestSuiteName", "QualificationStartTest");
 			extent.addSystemInfo("AVS Version", prop.getProperty("AVS_Version"));
+			extent.addSystemInfo("FirmWare Version", prop.getProperty("FM_Version"));
 			extent.addSystemInfo("User Name", prop.getProperty("User_Name"));
 			System.out.println("Qualification START Test is in Progress..");
 			
@@ -188,7 +189,7 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
 			
-			//Qualification Count before study
+						//Qualification Count before study
 			int beforeStudyCnt = assetDetailsPage.QualificationCnt();
 			
 			assetDetailsPage.select_Setup(SetupName);
