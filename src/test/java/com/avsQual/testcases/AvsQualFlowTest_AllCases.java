@@ -48,7 +48,7 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 	{
 		super();
 	}
-	
+	    
 	public ExtentReports extent;
 	public ExtentTest extentTest;
 	

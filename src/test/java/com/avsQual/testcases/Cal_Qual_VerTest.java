@@ -317,7 +317,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			StartVerificationPage.click_SelectAllBtn();
 			SensVerificationPage = StartVerificationPage.click_initVer();
 			Thread.sleep(2000);
-			
+			     
 			SensVerificationPage.click_StartBtn();
 			if(SensVerificationPage.waitForimgCheckSetpoint()==true)
 			{
