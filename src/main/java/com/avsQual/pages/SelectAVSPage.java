@@ -122,7 +122,7 @@ public class SelectAVSPage extends BaseClass{
 //			click_On(ethernet);
 //		}
 //		catch (Exception e) {
-//			e.getMessage();
+//			e.getMessage();            
 //		}
 		Thread.sleep(15000);
 		int explicitWaitTimeout = 2000; 
