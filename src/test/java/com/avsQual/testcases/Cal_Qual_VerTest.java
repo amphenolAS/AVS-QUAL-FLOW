@@ -240,8 +240,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 				TestUtilities.getFailedTCScreenshot(driver, "AVS_Calibration");
 				sa.assertTrue(SensCaliberationPage.isSaveButtonEnableStatus(), "Fail: Save Button is not enabled");
 			}
-			
-			
+
 			
 			//Qualification Count before study
 		
@@ -257,10 +256,6 @@ public class Cal_Qual_VerTest extends BaseClass {
 //			SelectAVSPage.select_AVS(SelectAVS);
 			SelectAVSPage.click_USBDocking();
 			QualificationStudyPage = SelectAVSPage.click_ConnectBtn();
-//			String sn = QualificationStudyPage.get_SetupName();
-//			String sn1 = sn.split(":")[1];
-//			String sn2 = sn1.trim();
-
 			Thread.sleep(1000);
 			
 				QualificationStudyPage.click_StartQualBtn();
