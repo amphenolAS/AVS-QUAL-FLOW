@@ -99,7 +99,6 @@ public class SelectAVSPage extends BaseClass{
 			waitForElementLoad(yesBtn, 10000);
 			Thread.sleep(1000);
 			click_On(yesBtn);
-			//tu.click_YesBtn_popup();
 		}
 		catch (Exception e) {
 			e.getMessage();
@@ -112,7 +111,6 @@ public class SelectAVSPage extends BaseClass{
 			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
 			Thread.sleep(1000);
 			clickOn(yesBtn);
-			//tu.click_YesBtn_popup();
 		}
 		catch (Exception e) {
 		e.getMessage();
@@ -122,7 +120,6 @@ public class SelectAVSPage extends BaseClass{
 //			WebElement ethernet = driver.findElementByAccessibilityId("ConnectEthernetOption");
 //			waitForElementLoad(ethernet, 100);
 //			click_On(ethernet);
-//			System.out.println("5");
 //		}
 //		catch (Exception e) {
 //			e.getMessage();

@@ -74,7 +74,7 @@ public class QualificationStudyPage extends BaseClass{
 	public void click_StartQualBtn() throws InterruptedException
 	{
 		WebElement startQual = driver.findElementByAccessibilityId("btnQSStartQualificaton");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		clickOn(startQual);    
 	}
 	public void click_YesBtn() throws InterruptedException
