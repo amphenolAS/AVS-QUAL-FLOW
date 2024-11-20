@@ -92,7 +92,6 @@ public class SelectAVSPage extends BaseClass{
 		Thread.sleep(2000);
 		clickOn(conctBtn);
 		
-		
 		try
 		{
 			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
@@ -128,7 +127,6 @@ public class SelectAVSPage extends BaseClass{
 //		catch (Exception e) {
 //			e.getMessage();
 //		}
-		
 		Thread.sleep(15000);
 		int explicitWaitTimeout = 2000; 
         driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
