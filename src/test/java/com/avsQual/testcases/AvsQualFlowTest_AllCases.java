@@ -48,7 +48,7 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 	{
 		super();
 	}
-	
+	    
 	public ExtentReports extent;
 	public ExtentTest extentTest;
 	
@@ -185,7 +185,6 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 		{
 			extentTest = extent.startTest(SetupName);
 			SoftAssert sa = new SoftAssert();
-			System.out.println("welcome");
 
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
 			

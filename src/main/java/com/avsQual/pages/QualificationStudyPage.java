@@ -75,7 +75,7 @@ public class QualificationStudyPage extends BaseClass{
 	{
 		WebElement startQual = driver.findElementByAccessibilityId("btnQSStartQualificaton");
 		Thread.sleep(2000);
-		clickOn(startQual);
+		clickOn(startQual);    
 	}
 	public void click_YesBtn() throws InterruptedException
     {
@@ -154,7 +154,7 @@ public class QualificationStudyPage extends BaseClass{
     public void click_SaveBtn() throws InterruptedException
     {
     	WebElement saveBtn = driver.findElementByAccessibilityId("btnSaveStudyFile");
-    	Thread.sleep(3000);
+    	Thread.sleep(2000);
     	clickOn(saveBtn);	
     }
     public void click_OkPopup2() throws InterruptedException
@@ -230,6 +230,26 @@ public class QualificationStudyPage extends BaseClass{
     	} 
     
     }
+    
+    
+    public boolean waitForSaveMsg() throws InterruptedException
+	{
+		boolean status = false;
+		try
+		{
+			int explicitWaitTimeout = 2000; 
+	        driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
+	       // WebElement saveBtn = driver.findElementByAccessibilityId("btnSaveStudyFile");
+	        WebElement saveBtn = driver.findElementByName("Please wait, Study File being generated at AVS");
+			status = IsElementVisibleStatus(saveBtn);
+		}
+		catch (Exception e) {
+			e.getMessage();
+		}
+		
+		return status;
+		
+	}
     public boolean is_QualStartBtnEnabled()
     {
     	boolean status = false;
@@ -285,6 +305,11 @@ public class QualificationStudyPage extends BaseClass{
 			status = false;
 		}
     	return status;
+    }
+    public boolean is_SaveButtonEnable()
+    {
+    	WebElement saveBtn = driver.findElementByAccessibilityId("btnSaveStudyFile");
+    	return IsElementEnabledStatus(saveBtn);
     }
     public void waitForStopBtnEnabled() throws InterruptedException
     {

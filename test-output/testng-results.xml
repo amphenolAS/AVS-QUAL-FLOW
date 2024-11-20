@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="0" skipped="1">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-11-20T04:55:10Z" name="Default suite" finished-at="2024-11-20T04:55:11Z" duration-ms="667">
+    <groups>
+    </groups>
+    <test started-at="2024-11-20T04:55:10Z" name="Default test" finished-at="2024-11-20T04:55:11Z" duration-ms="667">
+      <class name="com.avsQual.testcases.Cal_Qual_VerTest">
+        <test-method is-config="true" signature="PreSetup()[pri:0, instance:com.avsQual.testcases.Cal_Qual_VerTest@38089a5a]" started-at="2024-11-20T10:25:10Z" name="PreSetup" finished-at="2024-11-20T10:25:10Z" duration-ms="244" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PreSetup -->
+        <test-method signature="AVS_Calibearation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.avsQual.testcases.Cal_Qual_VerTest@38089a5a]" started-at="2024-11-20T10:25:11Z" name="AVS_Calibearation" data-provider="CQV" finished-at="2024-11-20T10:25:11Z" duration-ms="0" status="SKIP">
+          <exception class="java.lang.RuntimeException">
+            <message>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "java.io.InputStream.markSupported()" because "stream" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.RuntimeException: java.lang.NullPointerException: Cannot invoke "java.io.InputStream.markSupported()" because "stream" is null
+	at org.testng.internal.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:49)
+	at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:115)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:509)
+	at org.testng.internal.Invoker.handleParameters(Invoker.java:1308)
+	at org.testng.internal.Invoker.createParameters(Invoker.java:1036)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1126)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.io.InputStream.markSupported()" because "stream" is null
+	at org.apache.poi.poifs.filesystem.FileMagic.prepareToCheckMagic(FileMagic.java:173)
+	at org.apache.poi.ss.usermodel.WorkbookFactory.create(WorkbookFactory.java:224)
+	at org.apache.poi.ss.usermodel.WorkbookFactory.create(WorkbookFactory.java:198)
+	at com.avsQual.utility.Cal_Qual_VerUtility.getTestData(Cal_Qual_VerUtility.java:46)
+	at com.avsQual.utility.Cal_Qual_VerUtility.CQV(Cal_Qual_VerUtility.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:55)
+	at org.testng.internal.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:45)
+	... 22 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.RuntimeException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AVS_Calibearation -->
+        <test-method is-config="true" signature="endReport_releaseMomory()[pri:0, instance:com.avsQual.testcases.Cal_Qual_VerTest@38089a5a]" started-at="2024-11-20T10:25:11Z" name="endReport_releaseMomory" finished-at="2024-11-20T10:25:11Z" duration-ms="392" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endReport_releaseMomory -->
+      </class> <!-- com.avsQual.testcases.Cal_Qual_VerTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
