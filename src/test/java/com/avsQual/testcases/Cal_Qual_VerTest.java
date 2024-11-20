@@ -321,7 +321,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			SensVerificationPage.click_StartBtn();
 			if(SensVerificationPage.waitForimgCheckSetpoint()==true)
 			{
-				Thread.sleep(1000);
+				Thread.sleep(1000);          
 				SensVerificationPage.click_DeleteButton();
 				Thread.sleep(2000);
 			

@@ -82,7 +82,7 @@ public class QualificationStudyPage extends BaseClass{
     	WebElement yesBtn =  driver.findElementByClassName("MenuFlyout").findElement(By.name("Yes"));
     	Thread.sleep(1000);
     	clickOn(yesBtn);
-    }
+    }            
 	 public void stop_QualStudy(int time)
 	    {
 	    	WebElement stopQual = driver.findElementByAccessibilityId("btnQSStopQualificaton");

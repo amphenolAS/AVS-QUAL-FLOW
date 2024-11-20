@@ -117,7 +117,7 @@ public class SelectAVSPage extends BaseClass{
 		}
 		catch (Exception e) {
 		e.getMessage();
-		}    
+		}        
 //		try
 //		{
 //			WebElement ethernet = driver.findElementByAccessibilityId("ConnectEthernetOption");
