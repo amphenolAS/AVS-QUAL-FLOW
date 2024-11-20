@@ -103,11 +103,7 @@ public class SelectAVSPage extends BaseClass{
 			//tu.click_YesBtn_popup();
 		}
 		catch (Exception e) {
-			//WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
-			WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
-			waitForElementLoad(yesBtn, 10000);
-			Thread.sleep(1000);
-			click_On(yesBtn);
+			e.getMessage();
 		}
 		
 		Thread.sleep(10000);
@@ -134,11 +130,30 @@ public class SelectAVSPage extends BaseClass{
 //		}
 		
 		Thread.sleep(15000);
-		int explicitWaitTimeout = 200000; 
+		int explicitWaitTimeout = 2000; 
         driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
 
 		return new QualificationStudyPage();
 	}
+	public StartVerificationPage click_CnnctBtnVer() throws InterruptedException, IOException
+	{
+		Thread.sleep(3000);
+		clickOn(conctBtn);
+		try
+		{
+			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
+			clickOn(Yes_Btn);
+		}
+		catch (Exception e) {
+			e.getMessage();
+		}
+		Thread.sleep(15000);
+		int explicitWaitTimeout = 100;
+        driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
+ 
+		return new StartVerificationPage();
+	}
+ 
 	public String fetchTxt_FromAVSUnit(String ip)
 	{
 		List<WebElement> ipAdd = driver.findElementsByAccessibilityId("textBlockIpAddress");

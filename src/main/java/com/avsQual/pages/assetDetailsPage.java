@@ -189,6 +189,13 @@ public class assetDetailsPage extends BaseClass {
                 	int count = Integer.parseInt(value);
                 	return count;
                 }
+                public int VerCnt()
+                {
+                	WebElement verCnt = driver.findElementByAccessibilityId("VerificationsCountTextBlock");
+                	String value = FetchText(verCnt);
+                	int count = Integer.parseInt(value);
+                	return count;
+                }
                 //Verifying Reports Count is visible or not
                 public int reportsCnt()
                 {
@@ -930,6 +937,12 @@ public class assetDetailsPage extends BaseClass {
                                                 WebElement ReportsHeader_TextBlock = driver.findElementByAccessibilityId("ReportsHeaderTextBlock");
                                                 clickOn(ReportsHeader_TextBlock);
                                 }
+                             // click on Initiate Qual button under Setup tile
+                        		public SelectAVSPage click_InitiateVerBtn() throws IOException {
+                        			WebElement InitiateVer_Btn=driver.findElementByAccessibilityId("StartVerificationButton");
+                        			clickOn(InitiateVer_Btn);
+                        			return new SelectAVSPage();
+                        		}
 
 // Click the Asset edit button
                 public assetCreationPage click_assetEditBtn() throws InterruptedException, IOException {

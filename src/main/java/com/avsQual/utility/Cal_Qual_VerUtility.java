@@ -14,20 +14,20 @@ import org.testng.annotations.DataProvider;
 import com.avsQual.base.BaseClass;
 
 
-public class CaliberationUtility extends BaseClass {
+public class Cal_Qual_VerUtility extends BaseClass {
 
-	public CaliberationUtility() throws IOException {
+	public Cal_Qual_VerUtility() throws IOException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	// Read TestData from the Excel sheet
 	//Below Path will be used while executing scripts from Eclipse IDE.
-//	public static String TestData_sheetPath = System.getProperty("user.dir") + "/src/test/resources/TestData/" + "AVSCal_TestData.xlsx";
+//	public static String TestData_sheetPath = System.getProperty("user.dir") + "/src/test/resources/TestData/" + "AVS_CQV_TestData.xlsx";
 	
 	//Below Path will be used whle creating an Jar/exe file where the config file will be 
 	//placed present in the jar.exe path location.
-	public static String TestData_sheetPath = System.getProperty("user.dir") + "/AVSCal_TestData.xlsx";
+	public static String TestData_sheetPath = System.getProperty("user.dir") + "/AVS_CQV_TestData.xlsx";
 
 
 	static Workbook book;
@@ -69,9 +69,9 @@ public class CaliberationUtility extends BaseClass {
 	// ADMIN module related Test Data reference
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	@DataProvider(name = "AVSCAL")
-	public static Object[][] AVSCAL() {
-		String sheetName = "AVS_Cal";
+	@DataProvider(name = "CQV")
+	public static Object[][] CQV() {
+		String sheetName = "CQV";
 		Object[][] data = getTestData(sheetName);
 		return data;
 	}

@@ -37,17 +37,20 @@ import com.avsQual.pages.assetDetailsPage;
 import com.avsQual.pages.assetDetailsPage2;
 import com.avsQual.pages.assetHubPage;
 import com.avsQual.pages.StartCaliberationPage;
+import com.avsQual.pages.StartVerificationPage;
 import com.avsQual.pages.SensCaliberationPage;
+import com.avsQual.pages.SensVerificationPage;
 import com.avsQual.utility.CaliberationUtility;
 import com.avsQual.utility.QualificationUtility;
+import com.avsQual.utility.VerificationUtility;
 import com.avsQual.utility.TestUtilities;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class AVS_CaliberationTest extends BaseClass{
+public class AVS_VerificationTest extends BaseClass{
 	
-	public AVS_CaliberationTest() throws IOException
+	public AVS_VerificationTest() throws IOException
 	{
 		super();
 	}
@@ -81,16 +84,18 @@ public class AVS_CaliberationTest extends BaseClass{
 		HardwarePage HardwarePage; 
 		StartCaliberationPage StartCaliberationPage;
 		SensCaliberationPage SensCaliberationPage;
+		StartVerificationPage StartVerificationPage;
+		SensVerificationPage SensVerificationPage;
 		
 		@BeforeClass
 		public void PreSetup() throws InterruptedException, IOException, ParseException, AWTException {
 
-			extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/ER_" + "Calibration_Test" + ".html", true);
-			extent.addSystemInfo("TestSuiteName", "Calibration_Test");
+			extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/ER_" + "Verification_Test" + ".html", true);
+			extent.addSystemInfo("TestSuiteName", "Verification_Test");
 			extent.addSystemInfo("FirmWare Version", prop.getProperty("AVS_FW_Version"));
 			extent.addSystemInfo("DAQ_Version"  , prop.getProperty("DAQ_Version"));
 			extent.addSystemInfo("User Name", prop.getProperty("User_Name"));
-			System.out.println("Caliberation START Test is in Progress..");
+			System.out.println("Verification START Test is in Progress..");
 			
 			LaunchApp("Kaye.NextGenValidator_tdxctrh6k91jc!App");
 			Thread.sleep(500);
@@ -177,22 +182,22 @@ public class AVS_CaliberationTest extends BaseClass{
 		} 
 
 		
-		@Test(dataProvider = "AVSCAL", dataProviderClass = CaliberationUtility.class)
+		@Test(dataProvider = "AVSVER", dataProviderClass = VerificationUtility.class)
 		
 		public void  AVS_Calibearation(String AssetName, String SetupName, String AVS_IP, String SelectAVS, String BathTemp)
 				throws InterruptedException, IOException, AWTException
 		{
-			extentTest = extent.startTest(SetupName);
+			extentTest = extent.startTest("Save Button Enable Test(Cal_Qual_Ver)");
 			SoftAssert sa = new SoftAssert();
 
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
 			
 			//Calibration Count before study
-			int beforeStudyCnt = assetDetailsPage.CalCnt();
+			int beforeStudyCnt = assetDetailsPage.VerCnt();
 			System.out.println(beforeStudyCnt);
 			
 			assetDetailsPage.select_Setup(SetupName);
-			SelectAVSPage = assetDetailsPage.click_InitiateCalibBtn();
+			SelectAVSPage = assetDetailsPage.click_InitiateVerBtn();
 //			SelectAVSPage.clickt_IntoIpTxtBox();
 //			SelectAVSPage.enterTxt_IntoIpTxtBox(AVS_IP);
 //			SelectAVSPage.click_AddBtn();
@@ -200,32 +205,32 @@ public class AVS_CaliberationTest extends BaseClass{
 //			SelectAVSPage.select_AVS(SelectAVS);
 			SelectAVSPage.click_USBDocking();
 			
-			StartCaliberationPage = SelectAVSPage.click_CnnctBtn();
+			StartVerificationPage = SelectAVSPage.click_CnnctBtnVer();
 			Thread.sleep(10000);
-			StartCaliberationPage.click_SelectAllBtn();
-			SensCaliberationPage = StartCaliberationPage.click_initCappppBtn();
+			StartVerificationPage.click_SelectAllBtn();
+			SensVerificationPage = StartVerificationPage.click_initVer();
 			Thread.sleep(2000);
 			
-			SensCaliberationPage.click_StartBtn();
-			if(SensCaliberationPage.waitForimgCheckSetpoint()==true)
+			SensVerificationPage.click_StartBtn();
+			if(SensVerificationPage.waitForimgCheckSetpoint()==true)
 			{
 				Thread.sleep(1000);
-				SensCaliberationPage.click_DeleteButton();
+				SensVerificationPage.click_DeleteButton();
 				Thread.sleep(2000);
 			
 			//Validate Save Button Should be disable
-			sa.assertTrue(SensCaliberationPage.isSaveButtonEnableStatus(), "Fail: Save Button is not enabled");
+			sa.assertTrue(SensVerificationPage.isSaveButtonEnableStatus(), "Fail: Save Button is not enabled");
 			
-			SensCaliberationPage.click_SaveStudyBtn();
+			SensVerificationPage.click_SaveStudyBtn();
 			Thread.sleep(1000);
-			MainHubPage = SensCaliberationPage.clickBackButton();
+			MainHubPage = SensVerificationPage.clickBackButton();
 			MainHubPage.click_connectBtn();
 			Thread.sleep(1000);
 			assetHubPage = MainHubPage.Click_AssetTile2();
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
 
 			//Calibration Count after study
-			int afterStudyCnt = assetDetailsPage.CalCnt();
+			int afterStudyCnt = assetDetailsPage.VerCnt();
 			System.out.println(afterStudyCnt);
 			
 			//Here 1 represents qualification reports increments by 1 with every iteration
@@ -233,11 +238,12 @@ public class AVS_CaliberationTest extends BaseClass{
 			}
 			else
 			{
-				TestUtilities.getFailedTCScreenshot(driver, "AVS_Calibration");
-				sa.assertTrue(SensCaliberationPage.isSaveButtonEnableStatus(), "Fail: Save Button is not enabled");
+				TestUtilities.getFailedTCScreenshot(driver, "AVS_Verification");
+				sa.assertTrue(SensVerificationPage.isSaveButtonEnableStatus(), "Fail: else case skip Save Button is not enabled");
 			}
 			sa.assertAll();   
 			
 		}
 
 }
+

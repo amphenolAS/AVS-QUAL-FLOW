@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.avsQual.testcases.Cal_Qual_VerTest">
+        <methods>
+          <include name="Setup"/>
+          <include name="PreSetup"/>
+          <include name="endReport_releaseMomory"/>
+          <include name="AVS_Calibearation"/>
+          <include name="Teardown"/>
+        </methods>
+      </class> <!-- com.avsQual.testcases.Cal_Qual_VerTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
