@@ -74,15 +74,21 @@ public class QualificationStudyPage extends BaseClass{
 	public void click_StartQualBtn() throws InterruptedException
 	{
 		WebElement startQual = driver.findElementByAccessibilityId("btnQSStartQualificaton");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		clickOn(startQual);    
+	}
+	public boolean is_StartQualBtnEnable() throws InterruptedException
+	{
+		WebElement startQual = driver.findElementByAccessibilityId("btnQSStartQualificaton");
+		Thread.sleep(4000);
+		return IsElementEnabledStatus(startQual);    
 	}
 	public void click_YesBtn() throws InterruptedException
     {
     	WebElement yesBtn =  driver.findElementByClassName("MenuFlyout").findElement(By.name("Yes"));
     	Thread.sleep(1000);
     	clickOn(yesBtn);
-    }
+    }            
 	 public void stop_QualStudy(int time)
 	    {
 	    	WebElement stopQual = driver.findElementByAccessibilityId("btnQSStopQualificaton");

@@ -47,7 +47,7 @@ public class SensVerificationPage extends BaseClass{
 			clickOn(yes);
 			Thread.sleep(1000);
 			UserLoginPopup(getUID("adminFull"), getPW("adminFull"));
-			tu.click_YesBtn_popup();
+			//tu.click_YesBtn_popup();
 		}
 		
 		public void click_CancelBtn()

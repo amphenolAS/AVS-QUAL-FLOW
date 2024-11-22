@@ -34,8 +34,9 @@ public class StartVerificationPage extends BaseClass{
 			initVer = null;
 		}
 		
-		public void click_SelectAllBtn()
+		public void click_SelectAllBtn() throws InterruptedException
 		{
+			Thread.sleep(2000);
 			clickOn(selectAll);
 		}
 		

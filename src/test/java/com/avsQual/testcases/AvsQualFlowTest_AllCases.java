@@ -56,7 +56,7 @@ public class AvsQualFlowTest_AllCases extends BaseClass{
 		LoginPage LoginPage;
 		MainHubPage MainHubPage;
 		UserManagementPage UserManagementPage;
-		assetHubPage assetHubPage;
+		assetHubPage assetHubPage;          
 		assetCreationPage assetCreationPage;
 		assetDetailsPage2 assetDetailsPage2;
 		Setup_defineSetupPage Setup_defineSetupPage;
