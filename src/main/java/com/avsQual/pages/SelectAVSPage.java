@@ -92,12 +92,12 @@ public class SelectAVSPage extends BaseClass{
 		Thread.sleep(2000);
 		clickOn(conctBtn);
 		
-		try
+/*		try
 		{
 			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
 			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
-			waitForElementLoad(yesBtn, 10000);
-			Thread.sleep(1000);
+		//	waitForElementLoad(yesBtn, 10000);
+			Thread.sleep(4000);
 			click_On(yesBtn);
 		}
 		catch (Exception e) {
@@ -114,7 +114,7 @@ public class SelectAVSPage extends BaseClass{
 		}
 		catch (Exception e) {
 		e.getMessage();
-		}        
+		}       
 //		try
 //		{
 //			WebElement ethernet = driver.findElementByAccessibilityId("ConnectEthernetOption");
@@ -123,9 +123,9 @@ public class SelectAVSPage extends BaseClass{
 //		}
 //		catch (Exception e) {
 //			e.getMessage();            
-//		}
+//		} */
 		Thread.sleep(15000);
-		int explicitWaitTimeout = 2000; 
+		int explicitWaitTimeout = 600; 
         driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
 
 		return new QualificationStudyPage();
@@ -134,14 +134,14 @@ public class SelectAVSPage extends BaseClass{
 	{
 		Thread.sleep(3000);
 		clickOn(conctBtn);
-		try
-		{
-			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
-			clickOn(Yes_Btn);
-		}
-		catch (Exception e) {
-			e.getMessage();
-		}
+//		try
+//		{
+//			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
+//			clickOn(Yes_Btn);
+//		}
+//		catch (Exception e) {
+//			e.getMessage();
+//		}
 		Thread.sleep(15000);
 		int explicitWaitTimeout = 100;
         driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);

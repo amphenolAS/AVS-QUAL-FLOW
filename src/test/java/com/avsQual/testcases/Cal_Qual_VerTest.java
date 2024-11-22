@@ -182,7 +182,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			//driver = null;
 		} 
 		
-		@Test(priority=0,dataProvider = "CQV", dataProviderClass = Cal_Qual_VerUtility.class)
+		@Test(dataProvider = "CQV", dataProviderClass = Cal_Qual_VerUtility.class)
 		
 		public void  AVS_Calibearation(String AssetName, String SetupName, String AVS_IP, String SelectAVS, String BathTemp)
 				throws InterruptedException, IOException, AWTException
@@ -206,7 +206,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			SelectAVSPage.click_USBDocking();
 			
 			StartCaliberationPage = SelectAVSPage.click_CnnctBtn();
-			Thread.sleep(10000);
+			Thread.sleep(4000);
 			StartCaliberationPage.click_SelectAllBtn();
 			SensCaliberationPage = StartCaliberationPage.click_initCappppBtn();
 			Thread.sleep(2000);
@@ -257,8 +257,11 @@ public class Cal_Qual_VerTest extends BaseClass {
 			SelectAVSPage.click_USBDocking();
 			QualificationStudyPage = SelectAVSPage.click_ConnectBtn();
 			Thread.sleep(1000);
+			System.out.println("123");
 			
-				QualificationStudyPage.click_StartQualBtn();
+			
+			QualificationStudyPage.click_StartQualBtn();
+			
 				QualificationStudyPage.click_YesBtn();
 				UserLoginPopup(getUID("adminFull"), getPW("adminFull"));
 				QualificationStudyPage.click_OkPopup1();
@@ -284,7 +287,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			Thread.sleep(1000);
 			assetHubPage = MainHubPage.Click_AssetTile2();
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
-			assetDetailsPage.click_QualTile();
+			//assetDetailsPage.click_QualTile();
 			Thread.sleep(2000);
 			
 			//Qualification Count after study
@@ -295,6 +298,8 @@ public class Cal_Qual_VerTest extends BaseClass {
 					
 			
 			//Calibration Count before study
+			
+			
 			int beforeStudyCnt = assetDetailsPage.VerCnt();
 			System.out.println(beforeStudyCnt);
 			
@@ -308,7 +313,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			SelectAVSPage.click_USBDocking();
 			
 			StartVerificationPage = SelectAVSPage.click_CnnctBtnVer();
-			Thread.sleep(10000);
+			Thread.sleep(4000);
 			StartVerificationPage.click_SelectAllBtn();
 			SensVerificationPage = StartVerificationPage.click_initVer();
 			Thread.sleep(2000);
