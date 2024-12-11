@@ -8,7 +8,7 @@
           <include name="Setup"/>
           <include name="PreSetup"/>
           <include name="endReport_releaseMomory"/>
-          <include name="AVS_Calibearation"/>
+          <include name="AVS_Calibearation" invocation-numbers="0"/>
           <include name="Teardown"/>
         </methods>
       </class> <!-- com.avsQual.testcases.Cal_Qual_VerTest -->
