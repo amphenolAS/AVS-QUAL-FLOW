@@ -12,8 +12,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 import com.avsQual.base.BaseClass;
+import com.avsQual.pages.CerHostPage;
 import com.avsQual.pages.FM_SyncInPage;
 import com.avsQual.pages.FileManagementPage;
 import com.avsQual.pages.HardwarePage;
@@ -47,7 +47,9 @@ import com.avsQual.utility.TestUtilities;
 import com.avsQual.utility.VerificationUtility;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+import com.relevantcodes.extentreports.LogStatus;//
+import com.avsQual.pages.CerHostPage;
+
 
 public class Cal_Qual_VerTest extends BaseClass {
 
@@ -87,6 +89,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 		SensCaliberationPage SensCaliberationPage;
 		StartVerificationPage StartVerificationPage;
 		SensVerificationPage SensVerificationPage;
+		CerHostPage CerHostPage;
 		
 		@BeforeClass
 		public void PreSetup() throws InterruptedException, IOException, ParseException, AWTException {
@@ -191,6 +194,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			SoftAssert sa = new SoftAssert();
 
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
+			
 			
 			//Calibration Count before study
 			int beforeCalStudyCnt = assetDetailsPage.CalCnt();
@@ -297,7 +301,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			sa.assertEquals(beforeQualStudyCnt , afterQaulStudyCnt -1, "Fail: Qualification Reports are not generated");		
 					
 			
-			//Calibration Count before study
+			//Verification Count before study
 			
 			
 			int beforeStudyCnt = assetDetailsPage.VerCnt();
@@ -319,6 +323,18 @@ public class Cal_Qual_VerTest extends BaseClass {
 			Thread.sleep(2000);
 			     
 			SensVerificationPage.click_StartBtn();
+			/*
+			 * //if(msg.isdisplayed) { //AppClose(); // }
+			 * 
+			 * String appPath = System.getProperty("user.dir")+
+			 * "\\src\\test\\resources\\TestData\\CERHOST.exe"; CerHostLaunchApp(appPath);
+			 * CerHostPage = new CerHostPage(driver);
+			 */
+			
+			
+			
+			
+			
 			if(SensVerificationPage.waitForimgCheckSetpoint()==true)
 			{
 				Thread.sleep(1000);          
@@ -329,8 +345,9 @@ public class Cal_Qual_VerTest extends BaseClass {
 			sa.assertTrue(SensVerificationPage.isSaveButtonEnableStatus(), "Fail: Save Button is not enabled");
 			
 			SensVerificationPage.click_SaveStudyBtn();
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 			MainHubPage = SensVerificationPage.clickBackButton();
+			Thread.sleep(2000);
 			MainHubPage.click_connectBtn();
 			Thread.sleep(1000);
 			assetHubPage = MainHubPage.Click_AssetTile2();

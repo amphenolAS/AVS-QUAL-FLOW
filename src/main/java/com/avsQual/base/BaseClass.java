@@ -33,6 +33,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 //import com.avs.utility.TestUtilities;
 
 import io.appium.java_client.windows.WindowsDriver;
+import io.appium.java_client.windows.WindowsElement;
 
 
 
@@ -44,7 +45,7 @@ public class BaseClass {
 	//Declare the Windows Driver and make it Public/Static to be used throughout the classes
 	public static WindowsDriver driver;
 	public static ThreadLocal<WebDriver> tdriver = new ThreadLocal<WebDriver>();
-
+	public WindowsDriver<WindowsElement> driver1;
 
 	
 	//Calling Constructor method
@@ -450,5 +451,33 @@ public class BaseClass {
 		    String command = adobePath + " " + pdfFilePath;
 		    rt.exec(command);
 		}*/
+		
+		
+		// Launch CerhostApp/Setup Configuration Function
+		//Initialize Windows Driver
+		public static void CerHostLaunchApp(String exePath) throws InterruptedException {
+			try {
+				
+				DesiredCapabilities capabilities = new DesiredCapabilities();
+				// String exePath ="C:\\Users\\Kaveri.Bedar\\eclipse-workspace\\ADAVS2\\src\\test\\resources\\TestData\\CRT Licensting Tool\\CRTActivationTool.exe";
+		        capabilities.setCapability("app", exePath); // Full path to the .exe
+		        capabilities.setCapability("platformName", "Windows");
+		        capabilities.setCapability("deviceName", "WindowsPC");
+
+		        // Initialize the driver
+		        driver = new WindowsDriver<>(new URL("http://127.0.0.1:4723"), capabilities);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}		
+		}
+	
+		
+		
+		 // Close the application
+		public void closeApplication() {
+	        if (driver != null) {
+	            driver.quit();
+	        }
+	    }
 		
 }	

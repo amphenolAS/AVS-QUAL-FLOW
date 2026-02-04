@@ -50,6 +50,8 @@ public class SensVerificationPage extends BaseClass{
 			//tu.click_YesBtn_popup();
 		}
 		
+		
+		
 		public void click_CancelBtn()
 		{
 			clickOn(cancel);
@@ -65,10 +67,12 @@ public class SensVerificationPage extends BaseClass{
 			clickOn(okBtn);
 		}
 		
-		public MainHubPage clickBackButton() throws IOException
+		public MainHubPage clickBackButton() throws IOException, InterruptedException
 		{
+			Thread.sleep(5000);
 			WebElement back = driver.findElementByAccessibilityId("ArrowGlyph");
 			clickOn(back);
+			Thread.sleep(3000);
 			WebElement noBtn = driver.findElementByAccessibilityId("Button1");
 			clickOn(noBtn);
 			return new MainHubPage();
