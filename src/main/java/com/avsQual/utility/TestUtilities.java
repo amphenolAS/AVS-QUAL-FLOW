@@ -644,6 +644,7 @@ public class TestUtilities extends BaseClass {
 	
 	// Click the Yes button of the popup message 
 	public void click_YesBtn_popup() throws InterruptedException {
+		Thread.sleep(1000);
 		WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
 		Thread.sleep(2000);
 		clickOn(Yes_Btn);

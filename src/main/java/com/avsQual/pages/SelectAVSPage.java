@@ -73,7 +73,7 @@ public class SelectAVSPage extends BaseClass{
 		Thread.sleep(3000);
 		clickOn(conctBtn);
 		try
-		{
+		{Thread.sleep(2000);
 			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
 			clickOn(Yes_Btn);
 		}
@@ -89,10 +89,10 @@ public class SelectAVSPage extends BaseClass{
 	//Click on connect Button  
 	public QualificationStudyPage click_ConnectBtn() throws InterruptedException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		clickOn(conctBtn);
 		
-/*		try
+		try
 		{
 			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
 			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
@@ -105,7 +105,7 @@ public class SelectAVSPage extends BaseClass{
 		}
 		
 		Thread.sleep(10000);
-		try
+		/*try
 		{
 			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
 			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
@@ -134,14 +134,15 @@ public class SelectAVSPage extends BaseClass{
 	{
 		Thread.sleep(3000);
 		clickOn(conctBtn);
-//		try
-//		{
-//			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
-//			clickOn(Yes_Btn);
-//		}
-//		catch (Exception e) {
-//			e.getMessage();
-//		}
+		
+		try
+		{
+			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
+			clickOn(Yes_Btn);
+		}
+		catch (Exception e) {
+			e.getMessage();
+		}
 		Thread.sleep(15000);
 		int explicitWaitTimeout = 100;
         driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);

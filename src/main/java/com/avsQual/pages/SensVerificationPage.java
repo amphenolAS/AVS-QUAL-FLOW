@@ -40,7 +40,7 @@ public class SensVerificationPage extends BaseClass{
 		}
 		
 		public void click_StartBtn() throws InterruptedException
-		{
+		{Thread.sleep(2000);
 			clickOn(start);
 			Thread.sleep(1000);
 			WebElement yes = driver.findElementByName("Yes");
@@ -107,6 +107,52 @@ public class SensVerificationPage extends BaseClass{
 		{
 			WebElement deleteButton = driver.findElementByAccessibilityId("btnDelete");
 			clickOn(deleteButton);
+		}
+
+
+		/*public boolean isAVSBusyMsgDisplayed() {
+			try{
+				Thread.sleep(4000);
+				return driver.findElementByName("Unable to Start Study. System is busy. Try restarting AVS or sending setup again.").isDisplayed();
+				
+			} catch (Exception e) {
+				return false;	
+			}
+		}*/
+		
+		public boolean isAVSBusyMsgDisplayed() throws InterruptedException
+		{
+			boolean status = false;
+			try
+			{
+				int explicitWaitTimeout = 5; 
+		        driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
+		       // WebElement saveBtn = driver.findElementByAccessibilityId("btnSaveStudyFile");
+		        WebElement Unablemsg = driver.findElementByName("Unable to Start Study. System is busy. Try restarting AVS or sending setup again.");
+		        //"Unable to Start Study. System is busy. Try restarting AVS or sending setup again."
+				status = IsElementVisibleStatus(Unablemsg);
+			}
+			catch (Exception e) {
+				e.getMessage();
+			}
+			
+			return status;
+			
+		}
+		
+	
+		
+		public HardwarePage click_HardwareBtn() throws IOException {
+			WebElement Hardwarebtn =driver.findElementByAccessibilityId("btCSHardwareConnection");
+			clickOn(Hardwarebtn);
+			return new HardwarePage();
+			
+		}
+		
+		
+		public String get_AlertMsg_text() {
+			WebElement Msg = driver.findElementByAccessibilityId("dispalyMessageTextBlock");//dispalyMessageTextBlock
+				return FetchText(checkingVisibilityOfElement(Msg, 5));
 		}
 
 

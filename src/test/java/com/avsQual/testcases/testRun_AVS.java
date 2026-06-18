@@ -29,8 +29,9 @@ public class testRun_AVS {
 
 		testng = new TestNG();
 		//testng.setTestClasses(new Class[] {HitNTrialTests.class});
-		testng.setTestClasses(new Class[] {AvsQualFlow_FromScratch.class});
-
+		//testng.setTestClasses(new Class[] {Cal_Qual_VerTest.class});
+		testng.setTestClasses(new Class[] {Cal_Qual_VerTest2.class});
+		//testng.setTestClasses(new Class[] {Cancle_Cal_AVSCQVTest.class});
 		testng.run();			
 	}
 
