@@ -1,3 +1,4 @@
+//created by kaveriB and modified as on 25-06-2026 avs 18 build
 package com.avsQual.testcases;
 
 import java.awt.AWTException;
@@ -115,6 +116,11 @@ public class Cal_Qual_VerTest2 extends BaseClass {
 				AppClose();
 				System.out.println("step5-app closed");
 				Thread.sleep(2000);
+				if(driver != null)
+				{
+				    driver.quit();
+				    driver = null;
+				}
 			} catch (Exception e) {
 				//System.out.println("App is already launched");
 				System.out.println("PRESETUP FAILED");
@@ -189,7 +195,7 @@ public class Cal_Qual_VerTest2 extends BaseClass {
 		@AfterMethod(alwaysRun = true)
 		public void Teardown(ITestResult result) throws IOException {
 			if (result.getStatus() == ITestResult.FAILURE) {
-				// to add name in extent report
+				/*// to add name in extent report
 				extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS # " + result.getName() + " #");
 				// to add error/exception in extent report
 				extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS # " + result.getThrowable() + " #");
@@ -197,10 +203,44 @@ public class Cal_Qual_VerTest2 extends BaseClass {
 				String screenshotPath1 = TestUtilities.getFailedTCScreenshot(driver, result.getName());
 				extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath1));
 				// to add screencast/video in extent report
-				// extentTest.log(LogStatus.FAIL, extentTest.addScreencast(screenshotPath));
+				// extentTest.log(LogStatus.FAIL, extentTest.addScreencast(screenshotPath));*/
+				extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS # " + result.getThrowable() + " #");
+
+			    try {
+
+			        String screenshotPath1 = TestUtilities.getFailedTCScreenshot(driver,result.getName());
+
+			        extentTest.log(LogStatus.FAIL,extentTest.addScreenCapture(screenshotPath1));
+
+			    } catch(Exception e) {
+
+			        System.out.println( "Unable to capture screenshot for failed test");
+			    }
 
 			} else if (result.getStatus() == ITestResult.SKIP) {
-				extentTest.log(LogStatus.SKIP, "Test Case SKIPPED IS " + result.getName());
+				/*String screenshotPath =TestUtilities.getFailedTCScreenshot(driver,result.getName() + "_SKIPPED");
+				
+                   extentTest.log(LogStatus.SKIP, extentTest.addScreenCapture(screenshotPath));
+				extentTest.log(LogStatus.SKIP, "Test Case SKIPPED IS " + result.getName());*/
+				try {
+
+			        if(driver != null) {
+
+			            String screenshotPath =
+			                    TestUtilities.getFailedTCScreenshot(
+			                    driver,
+			                    result.getName() + "_SKIPPED");
+
+			            extentTest.log(LogStatus.SKIP,
+			                    extentTest.addScreenCapture(screenshotPath));
+			        }
+
+			    } catch (Exception e) {
+
+			        System.out.println("Unable to capture screenshot for skipped test");
+			    }
+
+			    extentTest.log(LogStatus.SKIP, "Test Case SKIPPED IS " + result.getName());
 			} else if (result.getStatus() == ITestResult.SUCCESS) {
 				extentTest.log(LogStatus.PASS, "Test Case PASSED IS # " + result.getName() + " #");
 
@@ -215,11 +255,17 @@ public class Cal_Qual_VerTest2 extends BaseClass {
 			    }
 			    catch(Exception e)
 			    {
-			    	 e.printStackTrace();
+			    	System.out.println("BEFORE METHOD FAILED");
+			    	System.out.println("Driver = " + driver);
+			    	e.printStackTrace();
+			    	
 			        System.out.println("Driver already closed");
 			    }
 			}
-			
+			System.out.println("================================");
+			System.out.println("Result Status = " + result.getStatus());
+			System.out.println("Test Name = " + result.getName());
+			System.out.println("================================");
 			//driver.quit();
 			driver = null;
 		} 
@@ -369,34 +415,27 @@ public class Cal_Qual_VerTest2 extends BaseClass {
 
 			        System.out.println("AVS Busy message displayed");
 
-			        extentTest.log(LogStatus.SKIP,
-			                "AVS Busy popup displayed during Verification");
+			        extentTest.log(LogStatus.SKIP, "AVS Busy popup displayed during Verification");
 
-			        String screenshotPath =
-			                TestUtilities.getFailedTCScreenshot(
-			                        driver,"AVS_BUSY_VERIFICATION");
+			        String screenshotPath =TestUtilities.getFailedTCScreenshot(driver,"AVS_BUSY_VERIFICATION");
 
-			        extentTest.log(LogStatus.SKIP,
-			                extentTest.addScreenCapture(screenshotPath));
+			        extentTest.log(LogStatus.SKIP,extentTest.addScreenCapture(screenshotPath));
 
 			        extent.flush();
 			        
-			        AppClose(); 
+			        //AppClose(); 
 			        Thread.sleep(5000);
 
-			        throw new SkipException(
-			                "Execution stopped due to AVS Busy popup");
+			        throw new SkipException("Execution stopped due to AVS Busy popup");
 			    }
 
 			}
 			catch (SkipException e) {
-
-			    throw e;
+                    throw e;
 			}
 			catch (Exception e) {
 
-			    System.out.println(
-			            "AVS Busy popup not displayed");
+			    System.out.println("AVS Busy popup not displayed");
 			}
 			
 			if(SensVerificationPage.waitForimgCheckSetpoint()==true)

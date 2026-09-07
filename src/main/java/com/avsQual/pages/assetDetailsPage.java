@@ -938,8 +938,9 @@ public class assetDetailsPage extends BaseClass {
                                                 clickOn(ReportsHeader_TextBlock);
                                 }
                              // click on Initiate Qual button under Setup tile
-                        		public SelectAVSPage click_InitiateVerBtn() throws IOException {
+                        		public SelectAVSPage click_InitiateVerBtn() throws IOException, InterruptedException {
                         			WebElement InitiateVer_Btn=driver.findElementByAccessibilityId("StartVerificationButton");
+                        			Thread.sleep(5000);
                         			clickOn(InitiateVer_Btn);
                         			return new SelectAVSPage();
                         		}

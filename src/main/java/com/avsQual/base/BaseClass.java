@@ -56,7 +56,7 @@ public class BaseClass {
 			 FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/config.properties");
 
 			//Below Path will be used while executing scripts from Eclipse IDE.
-			 //FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
+			// FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config.properties");
 			//FileInputStream fis = new FileInputStream("D:/UserInput.properties");//config properties no use
 			prop.load(fis);
 			
@@ -84,7 +84,7 @@ public class BaseClass {
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability("deviceName", "WindowsPC");
             capabilities.setCapability("app", Url);
-            capabilities.setCapability("ms:waitForAppLaunch", "40");
+            capabilities.setCapability("ms:waitForAppLaunch", "120");
 	
             driver = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);			
 			driver.manage().window().maximize();

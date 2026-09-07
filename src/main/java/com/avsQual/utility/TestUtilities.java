@@ -370,7 +370,7 @@ public class TestUtilities extends BaseClass {
 		// System.currentTimeMillis() + ".png"));
 	}
 
-	public static String getFailedTCScreenshot(WebDriver driver, String screenshotName) throws IOException {
+	/*public static String getFailedTCScreenshot(WebDriver driver, String screenshotName) throws IOException {
 		String dateName = new SimpleDateFormat("yyyy_MM_dd_hhmmss").format(new Date());
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);
@@ -381,6 +381,30 @@ public class TestUtilities extends BaseClass {
 		File finalDestination = new File(destination);
 		FileUtils.copyFile(source, finalDestination);
 		return destination;
+	}*/
+	public static String getFailedTCScreenshot(WebDriver driver,
+	        String screenshotName) throws IOException {
+
+	    String dateName = new SimpleDateFormat("yyyy_MM_dd_hhmmss")
+	            .format(new Date());
+
+	    File screenshotDir = new File(
+	            System.getProperty("user.dir")
+	            + "/FailedTestsScreenshots");
+
+	    if (!screenshotDir.exists()) {
+	        screenshotDir.mkdirs();
+	    }
+
+	    TakesScreenshot ts = (TakesScreenshot) driver;
+	    File source = ts.getScreenshotAs(OutputType.FILE);
+
+	    String destination = screenshotDir.getAbsolutePath()
+	            + "/" + screenshotName + "_" + dateName + ".png";
+
+	    FileUtils.copyFile(source, new File(destination));
+
+	    return destination;
 	}
 
 	public static String getPassTCScreenshot(WebDriver driver, String screenshotName) throws IOException {

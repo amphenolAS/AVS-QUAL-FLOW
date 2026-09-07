@@ -1,4 +1,6 @@
-package com.avsQual.utility;
+
+//this is used for normal cqv 
+/*package com.avsQual.utility;
 
 
 import java.io.FileInputStream;
@@ -75,5 +77,94 @@ public class Cal_Qual_VerUtility extends BaseClass {
 		Object[][] data = getTestData(sheetName);
 		return data;
 	}
+	
+}*/
+
+
+
+//this is used for multiple iterations with many testcases and data driven approach with excel sheet.
+
+package com.avsQual.utility;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.DataProvider;
+
+import com.avsQual.base.BaseClass;
+
+public class Cal_Qual_VerUtility extends BaseClass {
+
+    public Cal_Qual_VerUtility() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+ // Read TestData from the Excel sheet
+ 	//Below Path will be used while executing scripts from Eclipse IDE.
+ 	//public static String TestData_sheetPath = System.getProperty("user.dir") + "/src/test/resources/TestData/" + "AVS_CQV_TestData.xlsx";
+ 	
+ 	//Below Path will be used whle creating an Jar/exe file where the config file will be 
+ 	//placed present in the jar.exe path location.
+ 	 public static String TestData_sheetPath = System.getProperty("user.dir") + "/AVS_CQV_TestData.xlsx";
+    @DataProvider(name = "CQV")
+    public static Object[][] CQV() throws IOException {
+
+        return getTestData("CQV");
+    }
+
+
+    public static Object[][] getTestData(String sheetName)
+            throws IOException {
+
+        FileInputStream fis =
+                new FileInputStream(TestData_sheetPath);
+
+        Workbook workbook =
+                new XSSFWorkbook(fis);
+
+        Sheet sheet =
+                workbook.getSheet(sheetName);
+
+        int rowCount =
+                sheet.getLastRowNum();
+
+        int columnCount =
+                sheet.getRow(0).getLastCellNum();
+
+        Object[][] data =
+                new Object[rowCount][columnCount];
+
+
+        for (int i = 0; i < rowCount; i++) {
+
+            Row row =
+                    sheet.getRow(i + 1);
+
+            for (int j = 0; j < columnCount; j++) {
+
+                Cell cell =
+                        row.getCell(j);
+
+                if (cell != null) {
+                    data[i][j] =
+                            cell.toString();
+                } else {
+                    data[i][j] = "";
+                }
+            }
+        }
+
+        workbook.close();
+        fis.close();
+
+        return data;
+    }
 }
 

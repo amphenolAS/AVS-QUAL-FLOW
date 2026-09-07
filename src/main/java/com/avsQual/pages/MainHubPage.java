@@ -55,13 +55,12 @@ public class MainHubPage extends BaseClass {
 
 		// System.out.println("Login Page elements memory released");
 	}
-
 // click on discover tile
-//	public SelectBaseStationPage clickonDiscoverTile() throws InterruptedException, IOException {
-//		WebElement DiscoverTile = driver.findElementByName("Discover");
-//		clickOn(DiscoverTile);
-//		return new SelectBaseStationPage();
-//	}
+	public SelectAVSPage clickonDiscoverTile() throws InterruptedException, IOException {
+		WebElement DiscoverTile = driver.findElementByName("Discover");
+		clickOn(DiscoverTile);
+		return new SelectAVSPage();
+	}
 
 	// Verify the Main Hub Page title name
 	public boolean Is_mainHubPageTitle_Visible() {
@@ -251,6 +250,31 @@ public class MainHubPage extends BaseClass {
                    
     }
 
-
+ // click on connection btn
+ 	public  QualificationStudyPage click_Discover_Qual() throws InterruptedException, IOException {
+ 		WebElement DiscoverTile = driver.findElementByName("Qualification Study");
+ 		Thread.sleep(1000);
+		clickOn(DiscoverTile);
+ 		return new QualificationStudyPage();
+ 	}
+ 	
+ 	
+ // click on connection btn
+  	public  SensCaliberationPage click_Discover_Cal() throws InterruptedException, IOException {
+  		WebElement DiscoverTile = driver.findElementByName("Calibration Study");
+  		Thread.sleep(1000);
+ 		clickOn(DiscoverTile);
+  		return new SensCaliberationPage();
+  	}
+  	
+  	
+  	
+  	
+  	public  SensVerificationPage click_Discover_Ver() throws InterruptedException, IOException {
+  		WebElement DiscoverTile = driver.findElementByName("Verification Study");
+  		Thread.sleep(1000);
+ 		clickOn(DiscoverTile);
+  		return new SensVerificationPage();
+  	}
 
 }
