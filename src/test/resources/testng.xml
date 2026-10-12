@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- <suite name="Suite"> this is used when no grouping instance-->
+<suite name="CQV Suite" group-by-instances="true"  parallel="false">
+  <test thread-count="5" name="Test">
+    <classes>
+    <!-- <class name="com.avsQual.testcases.Qual_eventsTest"/>  this si used for single iteration-->
+     <!--  <class name="com.avsQual.testcases.Cal_Qual_VerTest2"/>-->
+     <!--<class name="com.avsQual.testcases.Cancle_Cal_AVSCQVTest"/>-->
+        <class name="com.avsQual.testcases.Qual_eventsTestF"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

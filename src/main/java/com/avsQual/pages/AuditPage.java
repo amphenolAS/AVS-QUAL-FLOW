@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.avsQual.base.BaseClass;
 
@@ -192,6 +194,32 @@ public class AuditPage extends BaseClass {
 	public void Click_GenerateReport_Btn() throws InterruptedException {
 		clickOn(GenerateReport_Btn);
 		Thread.sleep(1000);
+	}
+	
+	
+	public String getAuditTimestampFromAction(String actionText)
+	{
+	    Pattern pattern = Pattern.compile(
+	            "\\d{2}-[A-Za-z]{3}-\\d{4} \\d{2}:\\d{2}:\\d{2}"
+	    );
+
+	    Matcher matcher = pattern.matcher(actionText);
+
+	    if (matcher.find())
+	    {
+	        return matcher.group();
+	    }
+
+	    return null;
+	}
+	
+	
+	
+	
+	public String get_auditEvent_text(int index) {
+		List<WebElement> Act_Txt = driver.findElementByAccessibilityId("PART_ScrollViewer")
+				.findElements(By.className("TextBlock"));
+		return FetchText(Act_Txt.get(index));
 	}
 
 }

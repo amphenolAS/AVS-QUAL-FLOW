@@ -68,17 +68,27 @@ public class SelectAVSPage extends BaseClass{
 		clickOn(addBtn);
 	}
 	
-	public StartCaliberationPage click_CnnctBtn() throws InterruptedException, IOException
+/*	public StartCaliberationPage click_CnnctBtn() throws InterruptedException, IOException
 	{
 		Thread.sleep(3000);
 		clickOn(conctBtn);
 		try
-		{
+		{Thread.sleep(2000);
 			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
 			clickOn(Yes_Btn);
 		}
 		catch (Exception e) {
-			e.getMessage();
+			try {
+		        Thread.sleep(3000);
+
+		        WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
+
+		        click_On(yesBtn);
+		    }
+		    catch (Exception ex) {
+		        System.out.println("Yes button not found even after retry");
+		    }
+			//e.getMessage();
 		}
 		Thread.sleep(15000);
 		int explicitWaitTimeout = 100; 
@@ -86,62 +96,160 @@ public class SelectAVSPage extends BaseClass{
 
 		return new StartCaliberationPage();
 	}
+	*/
+	
+	public StartCaliberationPage click_CnnctBtn() throws InterruptedException, IOException
+	{
+	    Thread.sleep(4000);
+	    clickOn(conctBtn);
+TimeUnit.MINUTES.sleep(1); // Wait for 4 seconds before attempting to find the "Yes" button
+	    try
+	    {
+
+	        WebElement yesBtn = driver.findElement(By.name("Yes"));
+
+	        Thread.sleep(2000);
+
+	        click_On(yesBtn);
+
+	        System.out.println("Yes button clicked successfully");
+	    }
+	    catch (Exception e)
+	    {
+	        System.out.println("First attempt failed: " + e.getMessage());
+
+	        try
+	        {
+	            Thread.sleep(3000);
+
+	            WebElement yesBtn = driver.findElement(By.name("Yes"));
+
+	            click_On(yesBtn);
+
+	            System.out.println("Yes button clicked successfully on retry");
+	        }
+	        catch (Exception ex)
+	        {
+	            System.out.println("Yes button not found after retry");
+	            ex.printStackTrace();
+	        }
+	    }
+
+	    Thread.sleep(15000);
+
+	    int explicitWaitTimeout = 600;
+	    driver.manage().timeouts().implicitlyWait(
+	        explicitWaitTimeout, TimeUnit.SECONDS);
+
+	    return new StartCaliberationPage();
+	}
+	
+	/*
 	//Click on connect Button  
 	public QualificationStudyPage click_ConnectBtn() throws InterruptedException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		clickOn(conctBtn);
 		
-/*		try
+		try
 		{
-			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
+			Thread.sleep(4000);
 			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
 		//	waitForElementLoad(yesBtn, 10000);
-			Thread.sleep(4000);
+			Thread.sleep(8000);
 			click_On(yesBtn);
 		}
 		catch (Exception e) {
-			e.getMessage();
+			try {
+		        Thread.sleep(3000);
+
+		        WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
+
+		        click_On(yesBtn);
+		    }
+		    catch (Exception ex) {
+		        System.out.println("Yes button not found even after retry");
+		    }
 		}
 		
-		Thread.sleep(10000);
-		try
-		{
-			//WebElement yesBtn = driver.findElementByAccessibilityId("Popup Window").findElement(By.name("Yes"));
-			WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
-			Thread.sleep(1000);
-			clickOn(yesBtn);
-		}
-		catch (Exception e) {
-		e.getMessage();
-		}       
-//		try
-//		{
-//			WebElement ethernet = driver.findElementByAccessibilityId("ConnectEthernetOption");
-//			waitForElementLoad(ethernet, 100);
-//			click_On(ethernet);
-//		}
-//		catch (Exception e) {
-//			e.getMessage();            
-//		} */
 		Thread.sleep(15000);
 		int explicitWaitTimeout = 600; 
         driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
 
 		return new QualificationStudyPage();
+	}*/
+	
+	
+	public QualificationStudyPage click_ConnectBtn() throws InterruptedException, IOException
+	{
+	    Thread.sleep(4000);
+	    clickOn(conctBtn);
+TimeUnit.MINUTES.sleep(1); // Wait for 4 seconds before attempting to find the "Yes" button
+	    try
+	    {
+	        WebElement yesBtn = driver.findElement(By.name("Yes"));
+
+	        Thread.sleep(2000);
+
+	        click_On(yesBtn);
+
+	        System.out.println("Yes button clicked successfully");
+	    }
+	    catch (Exception e)
+	    {
+	        System.out.println("First attempt failed: " + e.getMessage());
+
+	        try
+	        {
+	            Thread.sleep(3000);
+
+	            WebElement yesBtn = driver.findElement(By.name("Yes"));
+
+	            click_On(yesBtn);
+
+	            System.out.println("Yes button clicked successfully on retry");
+	        }
+	        catch (Exception ex)
+	        {
+	            System.out.println("Yes button not found after retry");
+	            ex.printStackTrace();
+	        }
+	    }
+
+	    Thread.sleep(15000);
+
+	    int explicitWaitTimeout = 600;
+	    driver.manage().timeouts().implicitlyWait(
+	        explicitWaitTimeout, TimeUnit.SECONDS);
+
+	    return new QualificationStudyPage();
 	}
+	
+	
+	
 	public StartVerificationPage click_CnnctBtnVer() throws InterruptedException, IOException
 	{
 		Thread.sleep(3000);
 		clickOn(conctBtn);
-//		try
-//		{
-//			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
-//			clickOn(Yes_Btn);
-//		}
-//		catch (Exception e) {
-//			e.getMessage();
-//		}
+		TimeUnit.MINUTES.sleep(1);
+		try
+		{
+			WebElement Yes_Btn = driver.findElementByAccessibilityId("Button1");
+			clickOn(Yes_Btn);
+		}
+		catch (Exception e) {
+			//e.getMessage();
+			try {
+		        Thread.sleep(3000);
+
+		        WebElement yesBtn = driver.findElementByAccessibilityId("Button1");
+
+		        click_On(yesBtn);
+		    }
+		    catch (Exception ex) {
+		        System.out.println("Yes button not found even after retry");
+		    }
+		}
 		Thread.sleep(15000);
 		int explicitWaitTimeout = 100;
         driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);

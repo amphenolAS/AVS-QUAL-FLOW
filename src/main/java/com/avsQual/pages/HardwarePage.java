@@ -67,4 +67,11 @@ public class HardwarePage extends BaseClass{
 		clickOn(backBtn);
 		return new QualificationStudyPage();
 	}
+	
+	public SensVerificationPage click_BackBtn1() throws InterruptedException, IOException
+	{
+		Thread.sleep(1000);
+		clickOn(backBtn);
+		return new SensVerificationPage();
+	}
 }

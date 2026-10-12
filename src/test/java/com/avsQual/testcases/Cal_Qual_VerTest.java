@@ -2,9 +2,12 @@ package com.avsQual.testcases;
 
 import java.awt.AWTException;
 import java.io.IOException;
+import java.sql.Time;
 import java.text.ParseException;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -88,31 +91,33 @@ public class Cal_Qual_VerTest extends BaseClass {
 		StartVerificationPage StartVerificationPage;
 		SensVerificationPage SensVerificationPage;
 		
+	
 		@BeforeClass
 		public void PreSetup() throws InterruptedException, IOException, ParseException, AWTException {
 
 			extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/ER_" + "Cal_Qual_VerTest" + ".html", true);
 			extent.addSystemInfo("TestSuiteName", "Cal_Qual_VerTest");
-			extent.addSystemInfo("FirmWare Version", prop.getProperty("AVS_FW_Version"));
-			extent.addSystemInfo("DAQ_Version"  , prop.getProperty("DAQ_Version"));
+			extent.addSystemInfo("FirmWare Version",prop.getProperty("AVS_FW_Version"));
+			extent.addSystemInfo("DAQ_Version", prop.getProperty("DAQ_Version"));
 			extent.addSystemInfo("User Name", prop.getProperty("User_Name"));
 			System.out.println("Cal_Qual_VerTest is in Progress..");
 			
-			LaunchApp("Kaye.NextGenValidator_tdxctrh6k91jc!App");
-			Thread.sleep(500);
+			//LaunchApp("Kaye.NextGenValidator_tdxctrh6k91jc!App");
+			  LaunchApp("Kaye.NextGenValidator_tdxctrh6k91jc!App");
 			LoginPage = new LoginPage();
 			extent.addSystemInfo("AVS Version", LoginPage.get_SWVersion_About_Text());
+			//LoginPage.clickOn_AppName();
 			Thread.sleep(2000);
 			AppClose();
-			Thread.sleep(2000);
 			
-			LaunchApp("Kaye.NextGenValidator_tdxctrh6k91jc!App");
+			
+			
+			//LaunchApp("Kaye.NextGenValidator_tdxctrh6k91jc!App");
+			  LaunchApp("Kaye.NextGenValidator_tdxctrh6k91jc!App");
 			Thread.sleep(500);
 			LoginPage = new LoginPage();
 			MainHubPage = LoginPage.Login(getUID("adminFull"), getPW("adminFull"));
-			
 			assetHubPage = MainHubPage.Click_AssetTile2();
-			
 			if(!assetHubPage.is_AssetDisplayed("Amphenol"))
 			{
 			MainHubPage = assetHubPage.click_BackBtn();	
@@ -136,7 +141,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 				Thread.sleep(3000);
 				AppClose();
 				Thread.sleep(3000); 
-			}   	
+			}  
 			
 		}
 		// @AfterClass-All the tests are conducted
@@ -146,15 +151,17 @@ public class Cal_Qual_VerTest extends BaseClass {
 			extent.close();
 		}
 
+		
 		// Before Method(Test) method
 		@BeforeMethod(alwaysRun = true)
 		public void Setup() throws InterruptedException, IOException {
 			Thread.sleep(3000);
 			LaunchApp("Kaye.NextGenValidator_tdxctrh6k91jc!App");
-			Thread.sleep(500);
+			Thread.sleep(5000);
 			LoginPage = new LoginPage();
 			MainHubPage = LoginPage.Login(getUID("adminFull"), getPW("adminFull"));
 			assetHubPage = MainHubPage.Click_AssetTile2();
+			
 		}
 
 		// @AfterMethod TearDown of the App
@@ -182,6 +189,8 @@ public class Cal_Qual_VerTest extends BaseClass {
 			//driver = null;
 		} 
 		
+		
+		
 		@Test(dataProvider = "CQV", dataProviderClass = Cal_Qual_VerUtility.class)
 		
 		public void  AVS_Calibearation(String AssetName, String SetupName, String AVS_IP, String SelectAVS, String BathTemp)
@@ -191,18 +200,19 @@ public class Cal_Qual_VerTest extends BaseClass {
 			SoftAssert sa = new SoftAssert();
 
 			assetDetailsPage = assetHubPage.click_assetTile2(AssetName);
-			
+		
 			//Calibration Count before study
 			int beforeCalStudyCnt = assetDetailsPage.CalCnt();
 			System.out.println(beforeCalStudyCnt);
 			
 			assetDetailsPage.select_Setup(SetupName);
 			SelectAVSPage = assetDetailsPage.click_InitiateCalibBtn();
-//			SelectAVSPage.clickt_IntoIpTxtBox();
-//			SelectAVSPage.enterTxt_IntoIpTxtBox(AVS_IP);
-//			SelectAVSPage.click_AddBtn();
+			/*
+			SelectAVSPage.clickt_IntoIpTxtBox();
+			SelectAVSPage.enterTxt_IntoIpTxtBox(AVS_IP);
+			SelectAVSPage.click_AddBtn();
 			Thread.sleep(2000);
-//			SelectAVSPage.select_AVS(SelectAVS);
+			SelectAVSPage.select_AVS(SelectAVS);*/
 			SelectAVSPage.click_USBDocking();
 			
 			StartCaliberationPage = SelectAVSPage.click_CnnctBtn();
@@ -232,7 +242,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			//Calibration Count after study
 			int afterCalStudyCnt = assetDetailsPage.CalCnt();
 			
-			//Here 1 represents qualification reports increments by 1 with every iteration
+			//Here 1 represents Calbration reports increments by 1 with every iteration
 			sa.assertEquals(beforeCalStudyCnt , afterCalStudyCnt -1, "Fail: Qualification Reports are not generated");		
 			}
 			else
@@ -250,23 +260,24 @@ public class Cal_Qual_VerTest extends BaseClass {
 			assetDetailsPage.click_InitiateQualBtn();
 			SelectAVSPage = assetDetailsPage.StartQual_OKButton();
 			Thread.sleep(4000);
-//			SelectAVSPage.enterTxt_IntoIpTxtBox(AVS_IP);
-//			SelectAVSPage.click_AddBtn();
-				
-//			SelectAVSPage.select_AVS(SelectAVS);
+			/*
+			SelectAVSPage.enterTxt_IntoIpTxtBox(AVS_IP);
+			SelectAVSPage.click_AddBtn();
+			SelectAVSPage.select_AVS(SelectAVS);*/
 			SelectAVSPage.click_USBDocking();
+			//System.out.println("before moving to qual screen");
 			QualificationStudyPage = SelectAVSPage.click_ConnectBtn();
-			Thread.sleep(1000);
+			TimeUnit.MINUTES.sleep(3);
 			System.out.println("123");
 			
-			
-			QualificationStudyPage.click_StartQualBtn();
-			
+			//Thread.sleep(7000);
+			    QualificationStudyPage.click_StartQualBtn();
 				QualificationStudyPage.click_YesBtn();
 				UserLoginPopup(getUID("adminFull"), getPW("adminFull"));
 				QualificationStudyPage.click_OkPopup1();
 				QualificationStudyPage.click_DeleteBtn();
 				Thread.sleep(2000);
+				
 				
 			if(QualificationStudyPage.waitForSaveMsg()==true)
 			{
@@ -297,7 +308,7 @@ public class Cal_Qual_VerTest extends BaseClass {
 			sa.assertEquals(beforeQualStudyCnt , afterQaulStudyCnt -1, "Fail: Qualification Reports are not generated");		
 					
 			
-			//Calibration Count before study
+			//Verification Count before study
 			
 			
 			int beforeStudyCnt = assetDetailsPage.VerCnt();
@@ -305,20 +316,23 @@ public class Cal_Qual_VerTest extends BaseClass {
 			
 			assetDetailsPage.select_Setup(SetupName);
 			SelectAVSPage = assetDetailsPage.click_InitiateVerBtn();
-//			SelectAVSPage.clickt_IntoIpTxtBox();
-//			SelectAVSPage.enterTxt_IntoIpTxtBox(AVS_IP);
-//			SelectAVSPage.click_AddBtn();
+			/*
+			SelectAVSPage.clickt_IntoIpTxtBox();
+			SelectAVSPage.enterTxt_IntoIpTxtBox(AVS_IP);
+			SelectAVSPage.click_AddBtn();
 			Thread.sleep(2000);
-//			SelectAVSPage.select_AVS(SelectAVS);
+			SelectAVSPage.select_AVS(SelectAVS);*/
 			SelectAVSPage.click_USBDocking();
 			
 			StartVerificationPage = SelectAVSPage.click_CnnctBtnVer();
-			Thread.sleep(4000);
+			Thread.sleep(6000);
 			StartVerificationPage.click_SelectAllBtn();
+			TimeUnit.MINUTES.sleep(3);
 			SensVerificationPage = StartVerificationPage.click_initVer();
 			Thread.sleep(2000);
 			     
 			SensVerificationPage.click_StartBtn();
+			//Original code which im running
 			if(SensVerificationPage.waitForimgCheckSetpoint()==true)
 			{
 				Thread.sleep(1000);          
@@ -352,4 +366,6 @@ public class Cal_Qual_VerTest extends BaseClass {
 			
 		}
 		
-}
+		
+		
+		}

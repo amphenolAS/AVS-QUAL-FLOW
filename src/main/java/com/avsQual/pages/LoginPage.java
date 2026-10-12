@@ -3,6 +3,7 @@ package com.avsQual.pages;
 import java.awt.Desktop.Action;
 import java.io.IOException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -26,7 +27,8 @@ public class LoginPage extends BaseClass {
 
 	private void initElements() {
 		// LoginPage Page Element definition
-		ProductName = driver.findElementByAccessibilityId("NextGenTextBlock");
+		//ProductName = driver.findElementByAccessibilityId("NextGenTextBlock");//
+		//ProductName = driver.findElementByName("Advanced Validation System");
 		MainLoginUID = driver.findElementByAccessibilityId("LoginIDTextBox");
 		MainLoginPW = driver.findElementByAccessibilityId("PasswordTxtBox");
 		MainLoginBtn = driver.findElementByAccessibilityId("LoginButton");
@@ -62,12 +64,15 @@ public class LoginPage extends BaseClass {
 
 	// Check the contents of the Main Login screen")
 	public String AppName() {
+		//ProductName = driver.findElementByName("Advanced Validation System");
+		ProductName = driver.findElementByClassName("TextBlock").findElement(By.name("Advanced Validation System"));
 		return FetchText(ProductName);
 	}
 
 	// Click on the Product Name content
 	public void clickOn_AppName() throws InterruptedException {
 		Thread.sleep(1000);
+		ProductName = driver.findElementByClassName("TextBlock").findElement(By.name("Advanced Validation System"));
 		clickOn(ProductName);
 	}
 
@@ -366,7 +371,7 @@ public class LoginPage extends BaseClass {
 
 		WebElement bottomMenu_About_Icon = driver.findElementByAccessibilityId("AboutAppBarButton");
 		clickOn(bottomMenu_About_Icon);
-		Thread.sleep(500);
+		Thread.sleep(5000);
 		WebElement SWVersion_About_info = driver.findElementByAccessibilityId("SoftwareVersion");
 
 		String[] SWVer = FetchText(SWVersion_About_info).split(":");

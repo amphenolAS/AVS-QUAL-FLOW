@@ -14,6 +14,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+//for timestamps
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.avsQual.base.BaseClass;
 
@@ -74,7 +77,7 @@ public class QualificationStudyPage extends BaseClass{
 	public void click_StartQualBtn() throws InterruptedException
 	{
 		WebElement startQual = driver.findElementByAccessibilityId("btnQSStartQualificaton");
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		clickOn(startQual);    
 	}
 	public boolean is_StartQualBtnEnable() throws InterruptedException
@@ -139,7 +142,7 @@ public class QualificationStudyPage extends BaseClass{
     public void click_DeleteBtn() throws InterruptedException
     {
     	WebElement deleteBtn = driver.findElementByAccessibilityId("btnDelete");
-    	Thread.sleep(2000);
+    	Thread.sleep(4000);
     	clickOn(deleteBtn);
     }
     public boolean is_DltBtnVisible()
@@ -159,8 +162,9 @@ public class QualificationStudyPage extends BaseClass{
     }
     public void click_SaveBtn() throws InterruptedException
     {
-    	WebElement saveBtn = driver.findElementByAccessibilityId("btnSaveStudyFile");
-    	Thread.sleep(2000);
+    	WebElement saveBtn = driver.findElementByAccessibilityId("btnSaveStudyFile");//
+    	//WebElement saveBtn = driver.findElementByName("Save Study");
+    	Thread.sleep(5000);
     	clickOn(saveBtn);	
     }
     public void click_OkPopup2() throws InterruptedException
@@ -243,7 +247,7 @@ public class QualificationStudyPage extends BaseClass{
 		boolean status = false;
 		try
 		{
-			int explicitWaitTimeout = 2000; 
+			int explicitWaitTimeout = 1000; //2000
 	        driver.manage().timeouts().implicitlyWait(explicitWaitTimeout, TimeUnit.SECONDS);
 	       // WebElement saveBtn = driver.findElementByAccessibilityId("btnSaveStudyFile");
 	        WebElement saveBtn = driver.findElementByName("Please wait, Study File being generated at AVS");
@@ -421,6 +425,393 @@ public class QualificationStudyPage extends BaseClass{
 //    	text.getAttribute("Name");
 //    	return FetchText(text);
     }
-}
+    
+    
+    
+    
+    //for events methods
+    
+    
+ // ==========================================================
+ // Get all Live Message events
+ // ==========================================================
+/*
+ public List<WebElement> getLiveMessageEvents()
+ {
+     List<WebElement> messageBox =
+             driver.findElementsByAccessibilityId("PART_ScrollViewer");
 
+     if (messageBox.isEmpty())
+     {
+         throw new RuntimeException(
+                 "Live Message box not found"
+         );
+     }
+
+     List<WebElement> text =
+             messageBox.get(0).findElements(
+                     By.className("TextBlock")
+             );
+
+     return text;
+ }
+  
+ 
+ public String getLatestLiveEvent(String eventName)
+ {
+     List<WebElement> events =
+             getLiveMessageEvents();
+
+     String latestEvent = null;
+
+     for (WebElement event : events)
+     {
+         String eventText = FetchText(event);
+
+         System.out.println(
+                 "Live Message : " + eventText
+         );
+
+         if (eventText != null &&
+             eventText.startsWith(eventName))
+         {
+             latestEvent = eventText;
+         }
+     }
+
+     if (latestEvent == null)
+     {
+         throw new RuntimeException(
+                 "Live event not found: " + eventName
+         );
+     }
+
+     System.out.println(
+             "Latest Live Event : " + latestEvent
+     );
+
+     return latestEvent;
+ }
+ 
+ 
+ public String getLiveEventTimestamp(String eventName)
+ {
+     String event =
+             getLatestLiveEvent(eventName);
+
+     Pattern pattern = Pattern.compile(
+             "\\d{2}-[A-Za-z]{3}-\\d{4} " +
+             "\\d{2}:\\d{2}:\\d{2}"
+     );
+
+     Matcher matcher =
+             pattern.matcher(event);
+
+     if (matcher.find())
+     {
+         String timestamp = matcher.group();
+
+         System.out.println(
+                 "Event : " + eventName
+         );
+
+         System.out.println(
+                 "Timestamp : " + timestamp
+         );
+
+         return timestamp;
+     }
+
+     throw new RuntimeException(
+             "Timestamp not found for event: "
+             + event
+     );
+ }*/
+    
+ // ==========================================================
+ // LIVE MESSAGE EVENTS
+ // ==========================================================
+
+ /**
+  * Returns all TextBlock elements available in the Live Message box.
+  */
+ public List<WebElement> getLiveMessageEvents()
+ {
+     List<WebElement> messageBox =
+             driver.findElementsByAccessibilityId( "PART_ScrollViewer"  );
+           
+
+     if (messageBox.isEmpty())
+     {
+         throw new RuntimeException( "Live Message box not found");
+         
+     }
+
+     List<WebElement> textBlocks =
+             messageBox.get(0).findElements( By.className("TextBlock")  );
+           
+
+     return textBlocks;
+ }
+
+
+ // ==========================================================
+ // GET TEXT FROM EVENT
+ // ==========================================================
+
+ /**
+  * Reads the Name property directly.
+  *
+  * Do NOT use FetchText() here because some TextBlocks
+  * are not visible and FetchText() waits for visibility.
+  */
+ public String getEventText(WebElement element)
+ {
+     try
+     {
+         String text = element.getAttribute("Name");
+
+         if (text != null &&
+             !text.trim().isEmpty())
+         {
+             return text.trim();
+         }
+     }
+     catch (Exception e)
+     {
+         System.out.println(
+                 "Unable to read event text: "
+                 + e.getMessage()
+         );
+     }
+
+     return null;
+ }
+
+
+ 
+ // ==========================================================
+ // EXTRACT TIMESTAMP
+ // ==========================================================
+
+ public String extractTimestamp(String event)
+ {
+     Pattern pattern =
+             Pattern.compile(
+                     "\\d{2}-[A-Za-z]{3}-\\d{4} "
+                   + "\\d{2}:\\d{2}:\\d{2}"
+             );
+
+     Matcher matcher =
+             pattern.matcher(event);
+
+     if (matcher.find())
+     {
+         return matcher.group();
+     }
+
+     throw new RuntimeException(
+             "Timestamp not found in event: "
+             + event
+     );
+ }
+ public String getLatestLiveEvent(String eventName)
+ {
+     List<WebElement> events = getLiveMessageEvents();
+
+     String latestEvent = null;
+
+     for (WebElement event : events)
+     {
+         String eventText = getEventText(event);
+
+         if (eventText == null)
+         {
+             continue;
+         }
+
+         if (eventText.startsWith(eventName))
+         {
+             latestEvent = eventText;
+         }
+     }
+
+     if (latestEvent == null)
+     {
+         throw new RuntimeException(
+                 "Live event not found: " + eventName
+         );
+     }
+
+     System.out.println("Latest Live Event : " + latestEvent);
+
+     return latestEvent;
+ }
+
+ // ==========================================================
+ // GET LIVE EVENT TIMESTAMP
+ // ==========================================================
+
+ public String getLiveEventTimestamp(String eventName)
+ {
+     String event = getLatestLiveEvent(eventName);
+
+     String timestamp =extractTimestamp(event);
+
+     System.out.println("Event : " + eventName);
+
+     System.out.println("Timestamp : " + timestamp);
+
+     return timestamp;
+ }
+
+
+ 
+ // ==========================================================
+ // QUALIFICATION STOPPED EVENT
+ // ==========================================================
+
+
+ public String getLatestQualStoppedEvent()
+ {
+     List<WebElement> events =
+             getLiveMessageEvents();
+
+     String latestEvent = null;
+
+     for (WebElement event : events)
+     {
+         String eventText =
+                 getEventText(event);
+
+         if (eventText == null)
+         {
+             continue;
+         }
+
+         System.out.println(
+                 "Live Message : " + eventText
+         );
+
+         if (
+                 eventText.startsWith(
+                         "Manual Qual Stopped"
+                 )
+                 ||
+                 eventText.startsWith(
+                         "Auto Qual Stopped"
+                 )
+         )
+         {
+             latestEvent =
+                     eventText;
+         }
+     }
+
+     if (latestEvent == null)
+     {
+         throw new RuntimeException(
+                 "Qualification Stopped event "
+                 + "not found"
+         );
+     }
+
+     System.out.println(
+             "Latest Qual Stopped Event : "
+             + latestEvent
+     );
+
+     return extractTimestamp(
+             latestEvent
+     );
+ }
+    
+ 
+ public void click_SaveBtn_1() throws InterruptedException {
+
+	    WebElement saveBtn =
+	            driver.findElementByAccessibilityId("btnSaveStudyFile");
+
+	    System.out.println("Save button displayed: " + saveBtn.isDisplayed());
+	    System.out.println("Save button enabled: " + saveBtn.isEnabled());
+
+	    if (!saveBtn.isDisplayed()) {
+	        throw new IllegalStateException("Save Study button is not displayed");
+	    }
+
+	    if (!saveBtn.isEnabled()) {
+	        throw new IllegalStateException("Save Study button is disabled");
+	    }
+
+	    clickOn(saveBtn);
+
+	    System.out.println("Save Study button clicked successfully");
+	}
+ 
+ 
+ 
+ 
+ 
+ public boolean waitForLiveEvent(String eventName, int timeoutInSeconds)
+	        throws InterruptedException {
+
+	    for (int i = 0; i < timeoutInSeconds; i++) {
+
+	        try {
+	            String eventTime = getLiveEventTimestamp(eventName);
+
+	            if (eventTime != null && !eventTime.trim().isEmpty()) {
+
+	                System.out.println(
+	                    "Event received: " + eventName +
+	                    " | Time: " + eventTime
+	                );
+
+	                return true;
+	            }
+
+	        } catch (Exception e) {
+	            // Event not available yet
+	        }
+
+	        Thread.sleep(1000);
+	    }
+
+	    System.out.println(
+	        "Event not received within timeout: " + eventName
+	    );
+
+	    return false;
+	}
+    
+ 
+ 
+ public void click_Quitbtn() throws InterruptedException
+	{
+		WebElement QuitBtn = driver.findElementByName("Quit Qual");//Quit Qual
+		Thread.sleep(5000);
+		clickOn(QuitBtn);
+	}
+ 
+ 
+ 
+ public QualificationStudyPage click_SaveBtn1() throws InterruptedException {
+	    
+	    Thread.sleep(2000);
+
+	    if (saveStudy.isEnabled()) {
+	        System.out.println("Save button is enabled");
+
+	        saveStudy.click();
+
+	        Thread.sleep(3000);
+	        System.out.println("Save button clicked");
+	    } else {
+	        System.out.println("Save button is NOT enabled");
+	    }
+
+	    return this;
+	}
+
+}
 
